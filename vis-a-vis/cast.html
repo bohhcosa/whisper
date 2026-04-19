@@ -1,175 +1,289 @@
 <!DOCTYPE html>
-<html lang="it">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vis a Vis – Cast</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Vis a Vis - Cast</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: gold;
+            text-align: center;
+            font-size: 60px;
+            letter-spacing: 8px;
+            padding: 30px;
+            margin: 0;
+            border-bottom: 3px solid gold;
+        }
+
+        h2 {
+            color: gold;
+            text-align: center;
+            font-size: 20px;
+            letter-spacing: 3px;
+            margin: 0;
+            padding: 8px;
+            background-color: #111100;
+        }
+
+        h3 {
+            color: gold;
+            font-size: 18px;
+            margin: 0 0 4px 0;
+        }
+
+        .menu-nav {
+            background-color: #111111;
+            border-bottom: 2px solid gold;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .menu-nav a {
+            color: gold;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 10px 30px;
+            display: inline-block;
+            border-right: 1px solid #333;
+        }
+
+        .menu-nav a:hover {
+            background-color: gold;
+            color: black;
+        }
+
+        .pagina {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .titolo-pagina {
+            color: gold;
+            font-size: 32px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid gold;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            display: flex;
+            background-color: #1a1600;
+            border: 2px solid gold;
+            margin-bottom: 30px;
+        }
+
+        .foto {
+            background-color: #2a2000;
+            border-right: 2px solid gold;
+            width: 160px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: gold;
+            font-size: 11px;
+            text-align: center;
+            padding: 10px;
+            flex-shrink: 0;
+        }
+
+        .foto img {
+            width: 160px;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .info {
+            padding: 22px 28px;
+        }
+
+        .ruolo {
+            color: #aaaaaa;
+            font-size: 13px;
+            font-style: italic;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333300;
+        }
+
+        .info p {
+            font-size: 13px;
+            line-height: 1.85;
+            color: #cccccc;
+            text-align: justify;
+            margin: 0;
+        }
+
+        .piede {
+            background-color: black;
+            border-top: 3px solid gold;
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+
+        .piede span {
+            color: gold;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <div class="titolo-serie">Vis a Vis</div>
-        <div class="sottotitolo">Locked Up &nbsp;|&nbsp; Serie TV Spagnola &nbsp;|&nbsp; 2015 – 2019</div>
-    </header>
+    <h1>VIS A VIS</h1>
+    <h2>Locked Up &nbsp;|&nbsp; Serie TV Spagnola &nbsp;|&nbsp; 2015 - 2019</h2>
 
-    <!-- NAVIGAZIONE -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="stagioni.html">Stagioni</a></li>
-            <li><a href="cast.html" class="attivo">Cast</a></li>
-        </ul>
-    </nav>
+    <div class="menu-nav">
+        <a href="index.html">Home</a>
+        <a href="stagioni.html">Stagioni</a>
+        <a href="cast.html">Cast</a>
+    </div>
 
-    <!-- CORPO PRINCIPALE -->
-    <div class="contenitore-cast">
+    <div class="pagina">
 
-        <h1 class="titolo-pagina">Cast</h1>
+        <p class="titolo-pagina">Cast</p>
 
-        <!-- ===== MAGGIE CIVANTOS ===== -->
-        <div class="card-attore">
-            <div class="foto-attore">
-                <div class="foto-placeholder">
-                    <div class="icona">&#9786;</div>
-                    <div>Maggie<br>Civantos</div>
-                </div>
+        <!-- MAGGIE CIVANTOS -->
+        <div class="card">
+            <div class="foto">
+                <p style="font-size:40px; margin:0;">&#9786;</p>
+                <p>Maggie<br>Civantos</p>
             </div>
-            <div class="info-attore">
+            <div class="info">
                 <h3>Maggie Civantos (Macarena Ferreiro)</h3>
-                <div class="ruolo">Protagonista &nbsp;|&nbsp; Stagioni 1 – 4</div>
+                <p class="ruolo">Protagonista &nbsp;|&nbsp; Stagioni 1 - 4</p>
                 <p>
-                    Maggie Civantos (Granada, 15 dicembre 1987) è un'attrice spagnola conosciuta soprattutto per il ruolo di <strong>Macarena Ferreiro</strong> in Vis a Vis, serie che l'ha resa celebre a livello internazionale. Prima di questo ruolo, aveva già una carriera televisiva consolidata in Spagna grazie a serie come <em>Bienvenidos al Lolita</em> e <em>El Barco</em>. La sua interpretazione di Macarena — una giovane innocente che si trasforma progressivamente in una donna spietata e determinata — le ha valso importanti riconoscimenti nel panorama televisivo spagnolo. Dopo il successo di Vis a Vis ha recitato in numerose produzioni spagnole di rilievo, consolidando la sua posizione tra le attrici più talentuose della sua generazione. È anche apparsa in <em>El Oasis</em>, il sequel della serie originale distribuito su Netflix nel 2020.
+                    Maggie Civantos (Granada, 15 dicembre 1987) e un'attrice spagnola conosciuta soprattutto per il ruolo di Macarena Ferreiro in Vis a Vis, serie che l'ha resa celebre a livello internazionale. Prima di questo ruolo, aveva gia una carriera televisiva consolidata in Spagna grazie a serie come Bienvenidos al Lolita e El Barco. La sua interpretazione di Macarena, una giovane innocente che si trasforma progressivamente in una donna spietata e determinata, le ha valso importanti riconoscimenti nel panorama televisivo spagnolo. E anche apparsa in El Oasis, il sequel della serie originale distribuito su Netflix nel 2020.
                 </p>
             </div>
         </div>
 
-        <!-- ===== NAJWA NIMRI ===== -->
-        <div class="card-attore">
-            <div class="foto-attore">
-                <div class="foto-placeholder">
-                    <div class="icona">&#9786;</div>
-                    <div>Najwa<br>Nimri</div>
-                </div>
+        <!-- NAJWA NIMRI -->
+        <div class="card">
+            <div class="foto">
+                <p style="font-size:40px; margin:0;">&#9786;</p>
+                <p>Najwa<br>Nimri</p>
             </div>
-            <div class="info-attore">
+            <div class="info">
                 <h3>Najwa Nimri (Zulema Zahir)</h3>
-                <div class="ruolo">Antagonista principale &nbsp;|&nbsp; Stagioni 2 – 4 &amp; El Oasis</div>
+                <p class="ruolo">Antagonista principale &nbsp;|&nbsp; Stagioni 2 - 4 e El Oasis</p>
                 <p>
-                    Najwa Nimri (Pamplona, 14 febbraio 1972) è un'attrice e cantante spagnola di origini giordane, considerata una delle artiste più eclettiche e affascinanti del cinema e della televisione spagnola. Si è fatta conoscere grazie ai film di Julio Medem come <em>Vacas</em> (1992), <em>Los amantes del Círculo Polar</em> (1998) e <em>Lucía y el sexo</em> (2001). Ha recitato anche nel celebre thriller <em>El día de la bestia</em> e in <em>Abre los ojos</em> (1997). In televisione ha raggiunto la popolarità mondiale con i ruoli di <strong>Zulema Zahir</strong> in Vis a Vis e di <strong>Alicia Sierra</strong> nella serie La Casa di Carta, rendendola una delle icone della televisione spagnola contemporanea. La sua interpretazione di Zulema, personaggio carismatico, manipolatore e perturbante, è considerata una delle più memorabili degli ultimi anni.
+                    Najwa Nimri (Pamplona, 14 febbraio 1972) e un'attrice e cantante spagnola di origini giordane, considerata una delle artiste piu eclettiche del cinema e della televisione spagnola. Si e fatta conoscere grazie ai film di Julio Medem come Los amantes del Circulo Polar (1998) e Lucia y el sexo (2001). In televisione ha raggiunto la popolarita mondiale con i ruoli di Zulema Zahir in Vis a Vis e di Alicia Sierra nella serie La Casa di Carta, rendendola una delle icone della televisione spagnola contemporanea. La sua interpretazione di Zulema e considerata una delle piu memorabili degli ultimi anni.
                 </p>
             </div>
         </div>
 
-        <!-- ===== ALBA FLORES ===== -->
-        <div class="card-attore">
-            <div class="foto-attore">
-                <div class="foto-placeholder">
-                    <div class="icona">&#9786;</div>
-                    <div>Alba<br>Flores</div>
-                </div>
+        <!-- ALBA FLORES -->
+        <div class="card">
+            <div class="foto">
+                <p style="font-size:40px; margin:0;">&#9786;</p>
+                <p>Alba<br>Flores</p>
             </div>
-            <div class="info-attore">
-                <h3>Alba Flores (Saray Vargas "La Gitana")</h3>
-                <div class="ruolo">Personaggio ricorrente &nbsp;|&nbsp; Stagioni 1 – 4</div>
+            <div class="info">
+                <h3>Alba Flores (Saray Vargas - La Gitana)</h3>
+                <p class="ruolo">Personaggio ricorrente &nbsp;|&nbsp; Stagioni 1 - 4</p>
                 <p>
-                    Alba Flores (Madrid, 27 ottobre 1986) è un'attrice spagnola figlia del celebre cantante flamenco Antonio Flores. Proveniente da una famiglia di artisti, ha debuttato in teatro prima di approdare alla televisione. Il suo personaggio in Vis a Vis, <strong>Saray Vargas</strong> detta "La Gitana", è una delle figure più amate dalla serie: leale, istintiva, sanguigna e profondamente umana. La sua interpretazione ha ricevuto numerosi elogi dalla critica. Parallelamente al successo di Vis a Vis, Alba Flores ha guadagnato una popolarità ancora maggiore grazie al ruolo di <strong>Nairobi</strong> nella serie La Casa di Carta (Money Heist), diventando una vera e propria star internazionale. Ha recitato inoltre in serie come <em>Acacias 38</em> e in vari film per il cinema spagnolo.
+                    Alba Flores (Madrid, 27 ottobre 1986) e un'attrice spagnola figlia del celebre cantante flamenco Antonio Flores. Il suo personaggio in Vis a Vis, Saray Vargas detta La Gitana, e una delle figure piu amate dalla serie: leale, istintiva e profondamente umana. La sua interpretazione ha ricevuto numerosi elogi dalla critica. Alba Flores ha guadagnato una popolarita ancora maggiore grazie al ruolo di Nairobi nella serie La Casa di Carta (Money Heist), diventando una vera e propria star internazionale.
                 </p>
             </div>
         </div>
 
-        <!-- ===== ITZIAR CASTRO ===== -->
-        <div class="card-attore">
-            <div class="foto-attore">
-                <div class="foto-placeholder">
-                    <div class="icona">&#9786;</div>
-                    <div>Itziar<br>Castro</div>
-                </div>
+        <!-- ITZIAR CASTRO -->
+        <div class="card">
+            <div class="foto">
+                <p style="font-size:40px; margin:0;">&#9786;</p>
+                <p>Itziar<br>Castro</p>
             </div>
-            <div class="info-attore">
-                <h3>Itziar Castro (Josefa "Paca" Antúnez)</h3>
-                <div class="ruolo">Personaggio ricorrente &nbsp;|&nbsp; Stagioni 1 – 4</div>
+            <div class="info">
+                <h3>Itziar Castro (Josefa "Paca" Antunez)</h3>
+                <p class="ruolo">Personaggio ricorrente &nbsp;|&nbsp; Stagioni 1 - 4</p>
                 <p>
-                    Itziar Castro (Barcellona, 1 aprile 1977 – 2023) è stata un'attrice e cantante spagnola, una figura estremamente popolare e amata nel mondo dello spettacolo iberico. Il suo personaggio in Vis a Vis, <strong>Josefa "Paca" Antúnez</strong>, è una delle detenute più iconiche della serie: un misto di durezza e tenerezza, capace di far ridere e commuovere allo stesso tempo. Paca è diventata uno dei personaggi simbolo della serie, amato dal pubblico per la sua autenticità e per la profondità con cui Castro l'ha interpretato. Nel corso della sua carriera ha recitato in numerose serie televisive spagnole come <em>El ministerio del tiempo</em>, <em>Merlí</em> e vari lungometraggi. Castro è stata anche attivista per i diritti delle persone LGBTQ+ e si è battuta contro i pregiudizi legati all'immagine corporea nel mondo dello spettacolo.
+                    Itziar Castro (Barcellona, 1 aprile 1977 - 2023) e stata un'attrice e cantante spagnola, figura estremamente popolare nel mondo dello spettacolo iberico. Il suo personaggio in Vis a Vis, Josefa Paca Antunez, e una delle detenute piu iconiche della serie: un misto di durezza e tenerezza, capace di far ridere e commuovere allo stesso tempo. Nel corso della sua carriera ha recitato in numerose serie televisive spagnole come El ministerio del tiempo e Merli. Castro e stata anche attivista per i diritti delle persone LGBTQ+.
                 </p>
             </div>
         </div>
 
-        <!-- ===== CARLOS HIPÓLITO ===== -->
-        <div class="card-attore">
-            <div class="foto-attore">
-                <div class="foto-placeholder">
-                    <div class="icona">&#9786;</div>
-                    <div>Carlos<br>Hipólito</div>
-                </div>
+        <!-- CARLOS HIPOLITO -->
+        <div class="card">
+            <div class="foto">
+                <p style="font-size:40px; margin:0;">&#9786;</p>
+                <p>Carlos<br>Hipolito</p>
             </div>
-            <div class="info-attore">
-                <h3>Carlos Hipólito (Fabio Martínez)</h3>
-                <div class="ruolo">Direttore del carcere &nbsp;|&nbsp; Stagioni 1 – 4</div>
+            <div class="info">
+                <h3>Carlos Hipolito (Fabio Martinez)</h3>
+                <p class="ruolo">Direttore del carcere &nbsp;|&nbsp; Stagioni 1 - 4</p>
                 <p>
-                    Carlos Hipólito (Madrid, 22 dicembre 1956) è un attore e regista teatrale spagnolo di lungo corso, considerato uno dei più importanti interpreti del teatro contemporaneo spagnolo. Ha vinto numerosi premi tra cui il <em>Premio Max</em>, massimo riconoscimento del teatro spagnolo. In Vis a Vis interpreta <strong>Fabio Martínez</strong>, il direttore del penitenziario femminile Cruz del Sur, un personaggio complesso e moralmente ambiguo, diviso tra il rispetto delle regole istituzionali e i sentimenti personali. La sua interpretazione conferisce al personaggio una profondità e una credibilità straordinarie. Oltre al teatro, ha una lunga carriera televisiva e cinematografica con titoli come <em>El método</em>, <em>Los girasoles ciegos</em> e <em>También la lluvia</em>, per il quale ha ricevuto il Premio Goya come Miglior Attore Non Protagonista.
+                    Carlos Hipolito (Madrid, 22 dicembre 1956) e un attore e regista teatrale spagnolo di lungo corso, considerato uno dei piu importanti interpreti del teatro contemporaneo spagnolo. Ha vinto numerosi premi tra cui il Premio Max, massimo riconoscimento del teatro spagnolo. In Vis a Vis interpreta Fabio Martinez, il direttore del penitenziario femminile Cruz del Sur, un personaggio complesso e moralmente ambiguo. Ha vinto il Premio Goya come Miglior Attore Non Protagonista per il film Tambien la lluvia.
                 </p>
             </div>
         </div>
 
-        <!-- ===== MARTA ALEDO ===== -->
-        <div class="card-attore">
-            <div class="foto-attore">
-                <div class="foto-placeholder">
-                    <div class="icona">&#9786;</div>
-                    <div>Marta<br>Aledo</div>
-                </div>
+        <!-- MARTA ALEDO -->
+        <div class="card">
+            <div class="foto">
+                <p style="font-size:40px; margin:0;">&#9786;</p>
+                <p>Marta<br>Aledo</p>
             </div>
-            <div class="info-attore">
-                <h3>Marta Aledo (Amanda "Rizos")</h3>
-                <div class="ruolo">Personaggio ricorrente &nbsp;|&nbsp; Stagioni 1 – 4</div>
+            <div class="info">
+                <h3>Marta Aledo (Amanda - Rizos)</h3>
+                <p class="ruolo">Personaggio ricorrente &nbsp;|&nbsp; Stagioni 1 - 4</p>
                 <p>
-                    Marta Aledo è un'attrice spagnola nota soprattutto per il suo ruolo di <strong>Amanda "Rizos"</strong> in Vis a Vis. Il suo personaggio è una delle detenute più dinamiche e complesse della serie: Amanda è solare, imprevedibile e capace di grande affetto, ma anche di freddezza quando necessario. La sua storia all'interno del carcere è una di quelle che più tocca il pubblico, affrontando temi come la maternità, la perdita e la ricerca di identità in un contesto estremo. Marta Aledo ha una solida formazione teatrale e televisiva in Spagna, avendo recitato in diverse produzioni prima di Vis a Vis. Il successo internazionale della serie le ha aperto numerose porte nel panorama televisivo spagnolo e non solo, consolidando la sua reputazione come interprete di grande versatilità.
+                    Marta Aledo e un'attrice spagnola nota soprattutto per il suo ruolo di Amanda Rizos in Vis a Vis. Il suo personaggio e una delle detenute piu dinamiche e complesse della serie: Amanda e solare, imprevedibile e capace di grande affetto. La sua storia all'interno del carcere affronta temi come la maternita, la perdita e la ricerca di identita in un contesto estremo. Marta Aledo ha una solida formazione teatrale e televisiva in Spagna, avendo recitato in diverse produzioni prima di Vis a Vis.
                 </p>
             </div>
         </div>
 
-        <!-- ===== GOYA TOLEDO ===== -->
-        <div class="card-attore">
-            <div class="foto-attore">
-                <div class="foto-placeholder">
-                    <div class="icona">&#9786;</div>
-                    <div>Goya<br>Toledo</div>
-                </div>
+        <!-- GOYA TOLEDO -->
+        <div class="card">
+            <div class="foto">
+                <p style="font-size:40px; margin:0;">&#9786;</p>
+                <p>Goya<br>Toledo</p>
             </div>
-            <div class="info-attore">
+            <div class="info">
                 <h3>Goya Toledo (Sole)</h3>
-                <div class="ruolo">Personaggio ricorrente &nbsp;|&nbsp; Stagioni 1 – 3</div>
+                <p class="ruolo">Personaggio ricorrente &nbsp;|&nbsp; Stagioni 1 - 3</p>
                 <p>
-                    Goya Toledo (Las Palmas de Gran Canaria, 4 settembre 1969) è un'attrice spagnola con una lunga e prestigiosa carriera nel cinema e nella televisione. È conosciuta a livello internazionale soprattutto per il suo ruolo nel film messicano <em>Amores Perros</em> (2000) di Alejandro González Iñárritu, che le ha aperto le porte del cinema internazionale. In Vis a Vis interpreta <strong>Sole</strong>, una detenuta dal carattere forte e determinato, con un passato difficile alle spalle. La Toledo porta sul personaggio tutta la sua esperienza cinematografica, regalando una performance intensa e credibile. Tra i suoi altri lavori di rilievo si ricordano il film spagnolo <em>El viaje de Carol</em> e la serie televisiva <em>Vis a Vis</em>, che ha rappresentato un importante ritorno sugli schermi spagnoli dopo anni di lavoro internazionale.
+                    Goya Toledo (Las Palmas de Gran Canaria, 4 settembre 1969) e un'attrice spagnola con una lunga carriera nel cinema e nella televisione. E conosciuta a livello internazionale soprattutto per il suo ruolo nel film messicano Amores Perros (2000) di Alejandro Gonzalez Inarritu, che le ha aperto le porte del cinema internazionale. In Vis a Vis interpreta Sole, una detenuta dal carattere forte e determinato, con un passato difficile alle spalle. Tra i suoi altri lavori si ricorda il film spagnolo El viaje de Carol.
                 </p>
             </div>
         </div>
 
-        <!-- ===== BERTA VÁZQUEZ ===== -->
-        <div class="card-attore">
-            <div class="foto-attore">
-                <div class="foto-placeholder">
-                    <div class="icona">&#9786;</div>
-                    <div>Berta<br>Vázquez</div>
-                </div>
+        <!-- BERTA VAZQUEZ -->
+        <div class="card">
+            <div class="foto">
+                <p style="font-size:40px; margin:0;">&#9786;</p>
+                <p>Berta<br>Vazquez</p>
             </div>
-            <div class="info-attore">
-                <h3>Berta Vázquez (Zulema Zahir – Stagione 1)</h3>
-                <div class="ruolo">Antagonista principale &nbsp;|&nbsp; Stagione 1</div>
+            <div class="info">
+                <h3>Berta Vazquez (Zulema Zahir - Stagione 1)</h3>
+                <p class="ruolo">Antagonista principale &nbsp;|&nbsp; Stagione 1</p>
                 <p>
-                    Berta Vázquez (Alicante, 26 gennaio 1988) è un'attrice spagnola che ha interpretato <strong>Zulema Zahir</strong> nella prima stagione di Vis a Vis, ruolo che ha poi lasciato a Najwa Nimri nelle stagioni successive. La sua Zulema ha impressionato il pubblico fin dal primo momento: un personaggio magnetico, crudele e intrigante, che domina la scena con la sola presenza. Berta Vázquez ha una formazione accademica in recitazione e ha lavorato sia in teatro che in cinema. Tra le sue produzioni più note si ricordano il film <em>Palmeras en la nieve</em> (2015), adattamento dell'omonimo romanzo bestseller di Luz Gabás, in cui interpreta uno dei ruoli principali. La sua carriera ha conosciuto una crescita costante grazie alla sua capacità di interpretare personaggi complessi e sfaccettati.
+                    Berta Vazquez (Alicante, 26 gennaio 1988) e un'attrice spagnola che ha interpretato Zulema Zahir nella prima stagione di Vis a Vis, ruolo che ha poi lasciato a Najwa Nimri nelle stagioni successive. La sua Zulema ha impressionato il pubblico fin dal primo momento: un personaggio magnetico, crudele e intrigante. Tra le sue produzioni piu note si ricorda il film Palmeras en la nieve (2015), adattamento dell'omonimo romanzo bestseller di Luz Gabas, in cui interpreta uno dei ruoli principali.
                 </p>
             </div>
         </div>
 
-    </div><!-- fine contenitore-cast -->
+    </div>
 
-    <!-- FOOTER -->
-    <footer>
+    <div class="piede">
         <p>&copy; 2024 &nbsp;|&nbsp; Sito dedicato a <span>Vis a Vis</span> &nbsp;|&nbsp; Progetto scolastico</p>
-    </footer>
+    </div>
 
 </body>
 </html>

@@ -1,48 +1,204 @@
 <!DOCTYPE html>
-<html lang="it">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vis a Vis – Stagioni</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Vis a Vis - Stagioni</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: gold;
+            text-align: center;
+            font-size: 60px;
+            letter-spacing: 8px;
+            padding: 30px;
+            margin: 0;
+            border-bottom: 3px solid gold;
+        }
+
+        h2 {
+            color: gold;
+            text-align: center;
+            font-size: 20px;
+            letter-spacing: 3px;
+            margin: 0;
+            padding: 8px;
+            background-color: #111100;
+        }
+
+        h3 {
+            color: black;
+            background-color: gold;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px 24px;
+            margin: 0;
+        }
+
+        .menu-nav {
+            background-color: #111111;
+            border-bottom: 2px solid gold;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .menu-nav a {
+            color: gold;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 10px 30px;
+            display: inline-block;
+            border-right: 1px solid #333;
+        }
+
+        .menu-nav a:hover {
+            background-color: gold;
+            color: black;
+        }
+
+        .pagina {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .titolo-pagina {
+            color: gold;
+            font-size: 32px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid gold;
+            margin-bottom: 40px;
+        }
+
+        .stagione {
+            background-color: #0d0d00;
+            border: 2px solid gold;
+            margin-bottom: 40px;
+        }
+
+        .stagione-info {
+            background-color: gold;
+            color: black;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stagione-info p {
+            margin: 0;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .stagione-corpo {
+            padding: 24px;
+        }
+
+        .stagione-corpo p {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #dddddd;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        table thead {
+            background-color: gold;
+            color: black;
+        }
+
+        table thead th {
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table tbody tr {
+            border-bottom: 1px solid #2a2a00;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #111100;
+        }
+
+        table tbody td {
+            padding: 9px 14px;
+            color: #cccccc;
+        }
+
+        table tbody td:first-child {
+            color: gold;
+            font-weight: bold;
+            text-align: center;
+            width: 60px;
+        }
+
+        .piede {
+            background-color: black;
+            border-top: 3px solid gold;
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+
+        .piede span {
+            color: gold;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <div class="titolo-serie">Vis a Vis</div>
-        <div class="sottotitolo">Locked Up &nbsp;|&nbsp; Serie TV Spagnola &nbsp;|&nbsp; 2015 – 2019</div>
-    </header>
+    <h1>VIS A VIS</h1>
+    <h2>Locked Up &nbsp;|&nbsp; Serie TV Spagnola &nbsp;|&nbsp; 2015 - 2019</h2>
 
-    <!-- NAVIGAZIONE -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="stagioni.html" class="attivo">Stagioni</a></li>
-            <li><a href="cast.html">Cast</a></li>
-        </ul>
-    </nav>
+    <div class="menu-nav">
+        <a href="index.html">Home</a>
+        <a href="stagioni.html">Stagioni</a>
+        <a href="cast.html">Cast</a>
+    </div>
 
-    <!-- CORPO PRINCIPALE -->
-    <div class="contenitore-stagioni">
+    <div class="pagina">
 
-        <h1 class="titolo-pagina">Le Stagioni</h1>
+        <p class="titolo-pagina">Le Stagioni</p>
 
-        <!-- ======================== STAGIONE 1 ======================== -->
-        <div class="stagione-blocco" id="s1">
-            <div class="stagione-header">
-                <h2>Prima Stagione</h2>
-                <div class="meta">
-                    Anno: 2015 &nbsp;|&nbsp; Episodi: 13 &nbsp;|&nbsp; Durata: ~70 min/ep
-                </div>
+        <!-- STAGIONE 1 -->
+        <div class="stagione" id="s1">
+            <h3>Prima Stagione</h3>
+            <div class="stagione-info">
+                <p>Anno: 2015</p>
+                <p>Episodi: 13</p>
+                <p>Durata: ~70 min/ep</p>
             </div>
             <div class="stagione-corpo">
-                <p class="trama-stagione">
-                    La prima stagione segue l'ingresso di <strong>Macarena Ferreiro</strong> nel penitenziario femminile Cruz del Sur. Giovane e inesperta, Macarena si trova catapultata in un mondo brutale e gerarchizzato, dove la sopravvivenza dipende dall'alleanze che si riescono a stringere. Viene subito presa di mira dalle detenute più dure e deve imparare in fretta le regole non scritte della prigione.
+                <p>
+                    La prima stagione segue l'ingresso di <b style="color:gold;">Macarena Ferreiro</b> nel penitenziario femminile Cruz del Sur. Giovane e inesperta, Macarena si trova catapultata in un mondo brutale e gerarchizzato, dove la sopravvivenza dipende dalle alleanze che si riescono a stringere. Viene subito presa di mira dalle detenute piu dure e deve imparare in fretta le regole non scritte della prigione.
                     <br><br>
-                    Incontra <strong>Saray Vargas</strong>, detta "La Gitana", che diventa una delle sue prime compagne. Conosce anche la leggendaria e temuta <strong>Zulema Zahir</strong>, la detenuta più pericolosa del penitenziario, con cui stabilisce un rapporto ambivalente di odio e dipendenza. Nel frattempo, cerca di mantenere i contatti con il mondo esterno e capire come sia possibile ridurre la propria pena. La stagione si conclude con una serie di rivelazioni che stravolgono gli equilibri interni al carcere.
+                    Incontra <b style="color:gold;">Saray Vargas</b>, detta La Gitana, che diventa una delle sue prime compagne. Conosce anche la leggendaria e temuta <b style="color:gold;">Zulema Zahir</b>, la detenuta piu pericolosa del penitenziario. La stagione si conclude con una serie di rivelazioni che stravolgono gli equilibri interni al carcere.
                 </p>
-                <table class="tabella-episodi">
+                <table>
                     <thead>
                         <tr>
                             <th>Num</th>
@@ -51,7 +207,7 @@
                     </thead>
                     <tbody>
                         <tr><td>1</td><td>Benvenuta in prigione</td></tr>
-                        <tr><td>2</td><td>La regola del più forte</td></tr>
+                        <tr><td>2</td><td>La regola del piu forte</td></tr>
                         <tr><td>3</td><td>Il patto con Zulema</td></tr>
                         <tr><td>4</td><td>Sangue sul cortile</td></tr>
                         <tr><td>5</td><td>Nessuna innocente</td></tr>
@@ -61,28 +217,28 @@
                         <tr><td>9</td><td>Chi comanda qui</td></tr>
                         <tr><td>10</td><td>Muri di cemento</td></tr>
                         <tr><td>11</td><td>Alleanze pericolose</td></tr>
-                        <tr><td>12</td><td>Il costo della libertà</td></tr>
+                        <tr><td>12</td><td>Il costo della liberta</td></tr>
                         <tr><td>13</td><td>Tutto brucia</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- ======================== STAGIONE 2 ======================== -->
-        <div class="stagione-blocco" id="s2">
-            <div class="stagione-header">
-                <h2>Seconda Stagione</h2>
-                <div class="meta">
-                    Anno: 2016 &nbsp;|&nbsp; Episodi: 13 &nbsp;|&nbsp; Durata: ~70 min/ep
-                </div>
+        <!-- STAGIONE 2 -->
+        <div class="stagione" id="s2">
+            <h3>Seconda Stagione</h3>
+            <div class="stagione-info">
+                <p>Anno: 2016</p>
+                <p>Episodi: 13</p>
+                <p>Durata: ~70 min/ep</p>
             </div>
             <div class="stagione-corpo">
-                <p class="trama-stagione">
-                    Nella seconda stagione le conseguenze degli eventi finali della prima stagione si fanno sentire duramente. Il carcere è sconvolto da nuovi equilibri di potere e <strong>Macarena</strong> si trova ad affrontare sfide ancora più grandi. La nuova versione di <strong>Zulema Zahir</strong> è più pericolosa che mai e il suo piano oscuro comincia a prendere forma.
+                <p>
+                    Nella seconda stagione le conseguenze degli eventi finali della prima stagione si fanno sentire duramente. Il carcere e sconvolto da nuovi equilibri di potere e <b style="color:gold;">Macarena</b> si trova ad affrontare sfide ancora piu grandi. La nuova versione di <b style="color:gold;">Zulema Zahir</b>, ora interpretata da Najwa Nimri, e piu pericolosa che mai.
                     <br><br>
-                    Emergono nuovi personaggi e vecchie rivalità esplodono. Macarena, ormai cambiata dal carcere, non è più la ragazza ingenua dell'inizio: impara ad usare le stesse armi del sistema per difendersi. La stagione approfondisce le storie delle detenute, svelando i background che le hanno portate in prigione, tra violenza domestica, povertà e tradimenti. Il finale di stagione lascia tutti i personaggi in una situazione drammaticamente instabile.
+                    Macarena, ormai cambiata dal carcere, non e piu la ragazza ingenua dell'inizio: impara ad usare le stesse armi del sistema per difendersi. La stagione approfondisce le storie delle detenute, svelando i background che le hanno portate in prigione. Il finale di stagione lascia tutti i personaggi in una situazione drammaticamente instabile.
                 </p>
-                <table class="tabella-episodi">
+                <table>
                     <thead>
                         <tr>
                             <th>Num</th>
@@ -108,21 +264,21 @@
             </div>
         </div>
 
-        <!-- ======================== STAGIONE 3 ======================== -->
-        <div class="stagione-blocco" id="s3">
-            <div class="stagione-header">
-                <h2>Terza Stagione</h2>
-                <div class="meta">
-                    Anno: 2018 &nbsp;|&nbsp; Episodi: 8 &nbsp;|&nbsp; Durata: ~70 min/ep
-                </div>
+        <!-- STAGIONE 3 -->
+        <div class="stagione" id="s3">
+            <h3>Terza Stagione</h3>
+            <div class="stagione-info">
+                <p>Anno: 2018</p>
+                <p>Episodi: 8</p>
+                <p>Durata: ~70 min/ep</p>
             </div>
             <div class="stagione-corpo">
-                <p class="trama-stagione">
-                    La terza stagione, prodotta per la rete Fox España, segna un cambio di tono: la narrazione diventa ancora più oscura e adrenalinica. <strong>Macarena</strong> è ora una donna completamente trasformata dal carcere. Il Cruz del Sur è attraversato da nuove tensioni e il potere di <strong>Zulema</strong> raggiunge il suo apice, portando con sé una scia di violenza e manipolazione.
+                <p>
+                    La terza stagione, prodotta per la rete Fox Espana, segna un cambio di tono: la narrazione diventa ancora piu oscura e adrenalinica. <b style="color:gold;">Macarena</b> e ora una donna completamente trasformata dal carcere. Il Cruz del Sur e attraversato da nuove tensioni e il potere di <b style="color:gold;">Zulema</b> raggiunge il suo apice.
                     <br><br>
-                    Un colpo di stato interno mette a rischio la vita di tutte le detenute. Il carcere diventa teatro di eventi estremi, tra rivolte, prese di ostaggi e alleanze inaspettate. La stagione esplora con ancora maggiore profondità il tema della resistenza femminile e del riscatto morale, con episodi densi di emozioni e colpi di scena che terranno lo spettatore incollato allo schermo fino all'ultimo secondo.
+                    Un colpo di stato interno mette a rischio la vita di tutte le detenute. Il carcere diventa teatro di eventi estremi, tra rivolte, prese di ostaggi e alleanze inaspettate. La stagione esplora con ancora maggiore profondita il tema della resistenza femminile con episodi densi di emozioni.
                 </p>
-                <table class="tabella-episodi">
+                <table>
                     <thead>
                         <tr>
                             <th>Num</th>
@@ -143,21 +299,21 @@
             </div>
         </div>
 
-        <!-- ======================== STAGIONE 4 ======================== -->
-        <div class="stagione-blocco" id="s4">
-            <div class="stagione-header">
-                <h2>Quarta Stagione</h2>
-                <div class="meta">
-                    Anno: 2019 &nbsp;|&nbsp; Episodi: 8 &nbsp;|&nbsp; Durata: ~70 min/ep
-                </div>
+        <!-- STAGIONE 4 -->
+        <div class="stagione" id="s4">
+            <h3>Quarta Stagione</h3>
+            <div class="stagione-info">
+                <p>Anno: 2019</p>
+                <p>Episodi: 8</p>
+                <p>Durata: ~70 min/ep</p>
             </div>
             <div class="stagione-corpo">
-                <p class="trama-stagione">
-                    La quarta e ultima stagione chiude definitivamente le storie dei personaggi principali. Dopo gli eventi devastanti della terza stagione, le sopravvissute devono fare i conti con le conseguenze delle loro scelte. <strong>Macarena</strong>, trasformata irriconoscibilmente rispetto alla giovane ingenua dell'inizio, deve decidere chi vuole essere una volta uscita dal carcere.
+                <p>
+                    La quarta e ultima stagione chiude definitivamente le storie dei personaggi principali. Dopo gli eventi devastanti della terza stagione, le sopravvissute devono fare i conti con le conseguenze delle loro scelte. <b style="color:gold;">Macarena</b>, trasformata irriconoscibilmente, deve decidere chi vuole essere una volta uscita dal carcere.
                     <br><br>
-                    <strong>Zulema</strong> gioca la sua ultima partita in un'epica battaglia per la sopravvivenza. Le storie di tutte le protagoniste trovano un epilogo emotivamente potente, tra sacrifici, redenzioni e rese dei conti finali. La serie si chiude con una conclusione che risponde alle domande rimaste in sospeso, lasciando nello spettatore un senso di catarsi e malinconia.
+                    <b style="color:gold;">Zulema</b> gioca la sua ultima partita in un'epica battaglia per la sopravvivenza. Le storie di tutte le protagoniste trovano un epilogo emotivamente potente, tra sacrifici, redenzioni e rese dei conti finali.
                 </p>
-                <table class="tabella-episodi">
+                <table>
                     <thead>
                         <tr>
                             <th>Num</th>
@@ -165,34 +321,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>1</td><td>Il prezzo della libertà</td></tr>
+                        <tr><td>1</td><td>Il prezzo della liberta</td></tr>
                         <tr><td>2</td><td>Senza via di ritorno</td></tr>
                         <tr><td>3</td><td>Fantasmi del passato</td></tr>
                         <tr><td>4</td><td>La caduta</td></tr>
                         <tr><td>5</td><td>Chi sei davvero</td></tr>
                         <tr><td>6</td><td>La guerra finale</td></tr>
-                        <tr><td>7</td><td>Nessuna innocente (parte II)</td></tr>
+                        <tr><td>7</td><td>Nessuna innocente parte II</td></tr>
                         <tr><td>8</td><td>Fine della pena</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- ======================== EL OASIS ======================== -->
-        <div class="stagione-blocco" id="oasis">
-            <div class="stagione-header">
-                <h2>El Oasis – Stagione Speciale</h2>
-                <div class="meta">
-                    Anno: 2020 &nbsp;|&nbsp; Episodi: 6 &nbsp;|&nbsp; Durata: ~50 min/ep
-                </div>
+        <!-- EL OASIS -->
+        <div class="stagione" id="oasis">
+            <h3>El Oasis - Stagione Speciale</h3>
+            <div class="stagione-info">
+                <p>Anno: 2020</p>
+                <p>Episodi: 6</p>
+                <p>Durata: ~50 min/ep</p>
             </div>
             <div class="stagione-corpo">
-                <p class="trama-stagione">
-                    <strong>El Oasis</strong> è la stagione speciale / spin-off di Vis a Vis, pensata come sequel e disponibile in esclusiva su Netflix. I personaggi principali della serie originale tornano in scena in una storia ambientata fuori dalle mura del Cruz del Sur. Macarena e Zulema, ora libere, si ritrovano coinvolte in una pericolosa operazione criminale che le metterà nuovamente faccia a faccia con il pericolo.
+                <p>
+                    <b style="color:gold;">El Oasis</b> e la stagione speciale di Vis a Vis, disponibile in esclusiva su Netflix. I personaggi principali della serie originale tornano in scena in una storia ambientata fuori dalle mura del Cruz del Sur. Macarena e Zulema, ora libere, si ritrovano coinvolte in una pericolosa operazione criminale.
                     <br><br>
-                    La stagione riprende il filo narrativo della serie principale con un taglio ancora più cinematografico, avvicinandosi ai ritmi di un action thriller. I fan della serie possono ritrovare i personaggi amati in nuove avventure, con flashback che rivelano dettagli inediti sulle loro vite. El Oasis rappresenta il congedo definitivo da questa storia, chiudendo con eleganza il cerchio aperto nel 2015.
+                    La stagione ha un taglio ancora piu cinematografico, avvicinandosi ai ritmi di un action thriller. El Oasis rappresenta il congedo definitivo da questa storia, chiudendo con eleganza il cerchio aperto nel 2015.
                 </p>
-                <table class="tabella-episodi">
+                <table>
                     <thead>
                         <tr>
                             <th>Num</th>
@@ -211,12 +367,11 @@
             </div>
         </div>
 
-    </div><!-- fine contenitore-stagioni -->
+    </div>
 
-    <!-- FOOTER -->
-    <footer>
+    <div class="piede">
         <p>&copy; 2024 &nbsp;|&nbsp; Sito dedicato a <span>Vis a Vis</span> &nbsp;|&nbsp; Progetto scolastico</p>
-    </footer>
+    </div>
 
 </body>
 </html>
