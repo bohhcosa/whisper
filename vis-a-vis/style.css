@@ -1,0 +1,449 @@
+/* ===== GLOBAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Georgia', serif;
+}
+
+a {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* ===== HEADER ===== */
+header {
+    background-color: #000000;
+    text-align: center;
+    padding: 30px 20px 10px;
+    border-bottom: 3px solid #FFD700;
+}
+
+.titolo-serie {
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    color: #FFD700;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.2);
+    font-family: 'Arial Black', 'Impact', sans-serif;
+}
+
+.sottotitolo {
+    font-size: 16px;
+    color: #aaaaaa;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 6px;
+}
+
+/* ===== NAVIGAZIONE ===== */
+nav {
+    background-color: #111111;
+    border-bottom: 2px solid #FFD700;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: inline-flex;
+    gap: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 14px 32px;
+    color: #FFD700;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-right: 1px solid #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.attivo {
+    background-color: #FFD700;
+    color: #000000;
+    text-decoration: none;
+}
+
+/* ===== LAYOUT HOME ===== */
+.contenitore-home {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 220px;
+    gap: 30px;
+    align-items: start;
+}
+
+/* ===== MENU LATERALE ===== */
+.menu-laterale {
+    background-color: #1a1a00;
+    border: 2px solid #FFD700;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.menu-laterale h3 {
+    color: #FFD700;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #FFD700;
+}
+
+.menu-laterale ul {
+    list-style: none;
+}
+
+.menu-laterale ul li {
+    padding: 4px 0;
+}
+
+.menu-laterale ul li a {
+    font-size: 13px;
+    color: #FFD700;
+}
+
+.menu-laterale ul li a:hover {
+    color: #ffffff;
+}
+
+/* ===== IMMAGINE PRINCIPALE ===== */
+.immagine-principale {
+    text-align: center;
+}
+
+.immagine-principale img {
+    max-width: 100%;
+    max-height: 400px;
+    border: 3px solid #FFD700;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.placeholder-img {
+    background: linear-gradient(135deg, #1a1a00, #333300);
+    border: 3px solid #FFD700;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #FFD700;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ===== SCHEDA INFO ===== */
+.scheda-info {
+    background-color: #0d0d0d;
+    border: 1px solid #444;
+    padding: 18px;
+    font-size: 12px;
+    color: #cccccc;
+    line-height: 2;
+}
+
+.scheda-info strong {
+    color: #FFD700;
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===== SEZIONE TRAMA ===== */
+.sezione-trama {
+    background-color: #1a1600;
+    border: 2px solid #FFD700;
+    padding: 30px;
+    margin-top: 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.sezione-trama h2 {
+    color: #FFD700;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #FFD700;
+}
+
+.sezione-trama p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: #dddddd;
+    margin-bottom: 14px;
+    text-align: justify;
+}
+
+/* ===== PAGINA STAGIONI ===== */
+.contenitore-stagioni {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.titolo-pagina {
+    color: #FFD700;
+    font-size: 32px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #FFD700;
+}
+
+.stagione-blocco {
+    background-color: #0d0d00;
+    border: 2px solid #FFD700;
+    margin-bottom: 40px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stagione-header {
+    background-color: #FFD700;
+    color: #000000;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stagione-header h2 {
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.stagione-header .meta {
+    font-size: 13px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.stagione-corpo {
+    padding: 24px;
+}
+
+.stagione-corpo .trama-stagione {
+    font-size: 14px;
+    line-height: 1.9;
+    color: #dddddd;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* ===== TABELLA EPISODI ===== */
+.tabella-episodi {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.tabella-episodi thead {
+    background-color: #FFD700;
+    color: #000000;
+}
+
+.tabella-episodi thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tabella-episodi tbody tr {
+    border-bottom: 1px solid #2a2a00;
+}
+
+.tabella-episodi tbody tr:nth-child(even) {
+    background-color: #111100;
+}
+
+.tabella-episodi tbody tr:hover {
+    background-color: #1a1600;
+}
+
+.tabella-episodi tbody td {
+    padding: 9px 14px;
+    color: #cccccc;
+}
+
+.tabella-episodi tbody td:first-child {
+    color: #FFD700;
+    font-weight: bold;
+    text-align: center;
+    width: 60px;
+}
+
+.tabella-episodi tbody td a {
+    color: #FFD700;
+}
+
+.tabella-episodi tbody td a:hover {
+    color: #ffffff;
+}
+
+/* ===== PAGINA CAST ===== */
+.contenitore-cast {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.card-attore {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0;
+    background-color: #1a1600;
+    border: 2px solid #FFD700;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.card-attore .foto-attore {
+    background-color: #0d0d00;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-attore .foto-attore img {
+    width: 160px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.foto-placeholder {
+    width: 160px;
+    height: 200px;
+    background: linear-gradient(135deg, #2a2000, #111100);
+    border-right: 2px solid #FFD700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    color: #FFD700;
+    font-size: 11px;
+    text-align: center;
+    padding: 10px;
+}
+
+.foto-placeholder .icona {
+    font-size: 40px;
+    opacity: 0.6;
+}
+
+.card-attore .info-attore {
+    padding: 22px 28px;
+}
+
+.card-attore .info-attore h3 {
+    color: #FFD700;
+    font-size: 18px;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.card-attore .info-attore .ruolo {
+    color: #aaaaaa;
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333300;
+}
+
+.card-attore .info-attore p {
+    font-size: 13px;
+    line-height: 1.85;
+    color: #cccccc;
+    text-align: justify;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #000000;
+    border-top: 3px solid #FFD700;
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-top: 40px;
+}
+
+footer span {
+    color: #FFD700;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .titolo-serie {
+        font-size: 36px;
+        letter-spacing: 4px;
+    }
+
+    .contenitore-home {
+        grid-template-columns: 1fr;
+    }
+
+    .scheda-info {
+        order: -1;
+    }
+
+    .card-attore {
+        grid-template-columns: 1fr;
+    }
+
+    .foto-placeholder,
+    .card-attore .foto-attore img {
+        width: 100%;
+        height: 200px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stagione-header {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
