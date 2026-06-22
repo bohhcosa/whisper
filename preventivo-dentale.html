@@ -243,7 +243,15 @@ body::after {
     <div class="c-tl"></div><div class="c-tr"></div>
     <div class="c-bl"></div><div class="c-br"></div>
     <div class="title">Preventivo Dentistico</div>
-    <div class="sub">SISTEMA DI VISUALIZZAZIONE ODONTOLOGICA &bull; FDI / ISO 3950</div>
+    <div class="sub">CAREDENT DENTAL EXPERTS &bull; FDI / ISO 3950</div>
+    <div style="margin-top:12px;display:flex;justify-content:center;gap:40px;font-size:.75rem;letter-spacing:.12em">
+      <span><span style="color:rgba(0,229,255,.4)">PAZIENTE</span><br>
+            <span style="color:var(--c);font-weight:bold" id="hdr-name"></span></span>
+      <span><span style="color:rgba(0,229,255,.4)">MEDICO</span><br>
+            <span style="color:rgba(0,229,255,.7)" id="hdr-doctor"></span></span>
+      <span><span style="color:rgba(0,229,255,.4)">DATA</span><br>
+            <span style="color:rgba(0,229,255,.7)" id="hdr-date"></span></span>
+    </div>
   </div>
 
   <!-- INFO BAR -->
@@ -321,37 +329,54 @@ body::after {
    ============================================================ */
 
 const PATIENT = {
-  name:     "Paziente",
-  doctor:   "Studio Dentistico",
-  date:     new Date().toLocaleDateString('it-IT'),
-  sessions: "—"          // es: "4"
+  name:     "HAYAT DERRIANI",
+  doctor:   "Dr. Simone Selvaggio / Dott. Andrea Vantà",
+  date:     "22/09/2025",
+  sessions: "—"
 };
 
-/*  Trattamenti per dente.
-    Chiave = numero FDI del dente.
-    type  = uno dei tipi definiti in TYPES (vedi sotto)
-    note  = descrizione libera
-    price = importo in euro (numero) */
+/* Tipo per colore sulla mappa — ogni dente ha UN tipo primario */
 const TREATMENTS = {
-  // ── esempi da personalizzare ──────────────────────────────
-  // 16: { type: 'crown',      note: 'Corona in zirconio',        price: 850  },
-  // 26: { type: 'crown',      note: 'Corona in zirconio',        price: 850  },
-  // 36: { type: 'implant',    note: 'Impianto + corona',         price: 1900 },
-  // 46: { type: 'extraction', note: 'Estrazione chirurgica',     price: 130  },
-  // 24: { type: 'filling',    note: 'Otturazione in composito',  price:  80  },
-  // 11: { type: 'crown',      note: 'Corona in ceramica',        price: 900  },
-  // 14: { type: 'rootcanal',  note: 'Devitalizzazione',          price: 350  },
-  // 31: { type: 'cleaning',   note: 'Igiene professionale',      price:  90  },
+  11: { type: 'filling',    note: 'III Classe di Black',                         price: 140  },
+  21: { type: 'filling',    note: 'III Classe di Black',                         price: 140  },
+  22: { type: 'rootcanal',  note: 'Endodonzia + perno + corona ceramica',        price: 823  },
+  23: { type: 'rootcanal',  note: 'Ritrattamento endo + perno + corona ceramica',price: 935  },
+  28: { type: 'extraction', note: 'Avulsione chirurgica',                        price:  60  },
+  34: { type: 'filling',    note: 'II Classe di Black',                          price: 120  },
+  35: { type: 'implant',    note: 'Posizionamento impianto',                     price: 840  },
+  36: { type: 'crown',      note: 'Corona in ceramica',                          price: 415  },
+  37: { type: 'implant',    note: 'Posizionamento impianto + corona ceramica',   price: 1255 },
+  38: { type: 'extraction', note: 'Avulsione chirurgica',                        price:  60  },
+  46: { type: 'crown',      note: 'Corona ceramica + elemento provvisorio',      price: 463  },
+  48: { type: 'extraction', note: 'Avulsione chirurgica',                        price:  60  },
 };
 
-/* Denti mancanti (verranno visualizzati come slot vuoti con X) */
-const MISSING = [
-  // 18, 28, 38, 48   // esempio: i quattro giudizi
-];
+/* Denti mancanti (slot vuoti con X) */
+const MISSING = [];
 
 /* Ponti: ogni sotto-array è un gruppo che forma un ponte */
-const BRIDGES = [
-  // [14, 15, 16]  // esempio
+const BRIDGES = [];
+
+/* Righe dettaglio tabella preventivo (voce per voce dal documento) */
+const QUOTE_ITEMS = [
+  { teeth:[28,38,48], label:'Avulsione chirurgica (×3)',                              note:'Denti 28, 38, 48',                             price: 180  },
+  { teeth:[35],       label:'Posizionamento impianto',                                note:'Moncone implantare + prestazione chirurgica',   price: 840  },
+  { teeth:[37],       label:'Posizionamento impianto',                                note:'Moncone implantare + prestazione chirurgica',   price: 840  },
+  { teeth:[22],       label:'Trattamento endodontico monocanalare',                   note:'Tecnica e materiale da otturazione',            price: 180  },
+  { teeth:[22],       label:'Ricostruzione con ferri endocanalari',                   note:'Qualsiasi numero di pareti',                   price: 180  },
+  { teeth:[23],       label:'Ritrattamento endodontico monocanalare',                 note:'Tecnica e materiale da otturazione',            price: 280  },
+  { teeth:[23],       label:'Ricostruzione con ferri endocanalari',                   note:'Qualsiasi numero di pareti',                   price: 180  },
+  { teeth:[22,23,46], label:'Elemento provvisorio in resina (×3)',                    note:'Per elemento',                                 price: 144  },
+  { teeth:[22],       label:'Corona/faccetta in ceramica su substrato',               note:'Elemento definitivo',                          price: 415  },
+  { teeth:[23],       label:'Corona/faccetta in ceramica su substrato',               note:'Elemento definitivo',                          price: 415  },
+  { teeth:[36],       label:'Corona/faccetta in ceramica su substrato',               note:'Elemento definitivo',                          price: 415  },
+  { teeth:[37],       label:'Corona/faccetta in ceramica su substrato',               note:'Su impianto, elemento definitivo',              price: 415  },
+  { teeth:[46],       label:'Corona/faccetta in ceramica su substrato',               note:'Elemento definitivo',                          price: 415  },
+  { teeth:[34],       label:'II Classe di Black',                                     note:'Premolari e molari',                           price: 120  },
+  { teeth:[11],       label:'III Classe di Black',                                    note:'Incisivi e canini',                            price: 140  },
+  { teeth:[21],       label:'III Classe di Black',                                    note:'Incisivi e canini',                            price: 140  },
+  { teeth:[23],       label:'Radiografia endorale',                                   note:'',                                             price:  12  },
+  { teeth:[],         label:'Radiografia endorale bocca completa',                    note:'',                                             price:  12  },
 ];
 
 /* ============================================================
@@ -576,13 +601,20 @@ function renderLegend() {
   Object.values(TREATMENTS).forEach(t=>used.add(t.type));
   if(MISSING.length) used.add('missing');
   if(BRIDGES.length) used.add('bridge');
+  // Ordine logico di visualizzazione
+  const ORDER = ['normal','filling','rootcanal','crown','implant','extraction','missing','bridge','cleaning','inlay'];
+  const sorted = ORDER.filter(k=>used.has(k)).concat([...used].filter(k=>!ORDER.includes(k)));
 
-  document.getElementById('legend').innerHTML = [...used].map(tp=>{
+  document.getElementById('legend').innerHTML = sorted.map(tp=>{
     const t = TYPES[tp];
     if(!t) return '';
+    // Conta denti con questo tipo
+    const cnt = Object.values(TREATMENTS).filter(tr=>tr.type===tp).length
+               + (tp==='missing' ? MISSING.length : 0);
+    const badge = cnt ? ` <span style="opacity:.5;font-size:.7rem">(${cnt})</span>` : '';
     return `<div class="leg-item" onclick="filterType('${tp}')">
       <div class="leg-dot" style="background:${t.fill};border-color:${t.stroke}"></div>
-      <span>${t.label}</span>
+      <span>${t.label}${badge}</span>
     </div>`;
   }).join('');
 }
@@ -592,14 +624,12 @@ function renderLegend() {
    ============================================================ */
 function renderTable() {
   const tbody = document.getElementById('tbody');
-  const entries = Object.entries(TREATMENTS);
+  const items = typeof QUOTE_ITEMS !== 'undefined' ? QUOTE_ITEMS : [];
   let total = 0;
 
-  if(!entries.length) {
-    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:rgba(0,229,255,.3);padding:22px">
-      Nessun trattamento — inserisci i dati nella variabile TREATMENTS
-    </td></tr>`;
-  } else {
+  if(!items.length) {
+    // fallback: usa TREATMENTS aggregati per dente
+    const entries = Object.entries(TREATMENTS);
     tbody.innerHTML = entries.map(([n, t])=>{
       const tp = TYPES[t.type] || TYPES.normal;
       total += t.price||0;
@@ -610,12 +640,32 @@ function renderTable() {
         <td class="tprice">€ ${(t.price||0).toFixed(2).replace('.',',')}</td>
       </tr>`;
     }).join('');
+  } else {
+    tbody.innerHTML = items.map(item=>{
+      total += item.price||0;
+      // Determina il colore dal tipo del primo dente della riga
+      const firstTooth = item.teeth[0];
+      const tp = firstTooth
+        ? (TYPES[toothType(firstTooth)] || TYPES.normal)
+        : TYPES.normal;
+      const badges = item.teeth.map(n=>
+        `<span class="tbadge" style="border-color:${tp.stroke};color:${tp.stroke}"
+          onclick="event.stopPropagation();pick(${n})">${n}</span>`
+      ).join('');
+      const clickFn = firstTooth ? `onclick="pick(${firstTooth})"` : '';
+      return `<tr ${clickFn} style="${firstTooth?'cursor:pointer':''}">
+        <td>${badges || '<span style="color:rgba(0,229,255,.3)">—</span>'}</td>
+        <td style="color:${tp.stroke}">${item.label}</td>
+        <td style="color:rgba(0,229,255,.55);font-size:.78rem">${item.note||'—'}</td>
+        <td class="tprice">€ ${(item.price||0).toFixed(2).replace('.',',')}</td>
+      </tr>`;
+    }).join('');
   }
 
   const fmt = v => v.toLocaleString('it-IT',{minimumFractionDigits:2});
   document.getElementById('grand-total').textContent = `€ ${fmt(total)}`;
-  document.getElementById('i-total').textContent = total ? `€ ${Math.round(total).toLocaleString('it-IT')}` : '€ 0';
-  document.getElementById('i-treated').textContent = entries.length + MISSING.length || '0';
+  document.getElementById('i-total').textContent = `€ ${Math.round(total).toLocaleString('it-IT')}`;
+  document.getElementById('i-treated').textContent = Object.keys(TREATMENTS).length + MISSING.length;
   document.getElementById('i-sessions').textContent = PATIENT.sessions;
   document.getElementById('i-teeth').textContent = 28 - MISSING.length;
   document.getElementById('doc-date').textContent = PATIENT.date;
@@ -678,6 +728,9 @@ function filterType(tp) {
 /* ============================================================
    INIT
    ============================================================ */
+document.getElementById('hdr-name').textContent   = PATIENT.name;
+document.getElementById('hdr-doctor').textContent = PATIENT.doctor;
+document.getElementById('hdr-date').textContent   = PATIENT.date;
 renderSVG();
 renderLegend();
 renderTable();
