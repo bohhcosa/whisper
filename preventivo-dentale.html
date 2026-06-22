@@ -3,235 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Preventivo Dentistico</title>
+<title>Preventivo Dentistico 3D</title>
 <style>
-:root {
-  --c: #00e5ff;
-  --c2: #0088ff;
-  --cdim: rgba(0,229,255,0.5);
-  --cbg: rgba(0,229,255,0.07);
-  --cborder: rgba(0,229,255,0.25);
-  --bg: #010a14;
+:root{
+  --c:#00e5ff; --cdim:rgba(0,229,255,.5);
+  --cbg:rgba(0,229,255,.07); --cborder:rgba(0,229,255,.25);
+  --bg:#010a14;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-
-body {
-  background: var(--bg);
-  color: var(--c);
-  font-family: 'Courier New', monospace;
-  min-height: 100vh;
-  overflow-x: hidden;
+body{
+  background:var(--bg); color:var(--c);
+  font-family:'Courier New',monospace; min-height:100vh; overflow-x:hidden;
 }
-
-/* Griglia olografica di sfondo */
-body::before {
-  content:'';
-  position:fixed;inset:0;
+body::before{ /* griglia olografica */
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:
-    linear-gradient(rgba(0,229,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,229,255,.04) 1px, transparent 1px);
+    linear-gradient(rgba(0,229,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,.04) 1px,transparent 1px);
   background-size:50px 50px;
-  z-index:0;pointer-events:none;
 }
-/* Scanlines */
-body::after {
-  content:'';
-  position:fixed;inset:0;
-  background:repeating-linear-gradient(
-    0deg,transparent,transparent 3px,rgba(0,0,0,.18) 3px,rgba(0,0,0,.18) 4px
-  );
-  pointer-events:none;z-index:9999;
+body::after{ /* scanlines */
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.18) 3px,rgba(0,0,0,.18) 4px);
 }
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:20px 16px 40px}
 
-.wrap {
-  position:relative;z-index:1;
-  max-width:1100px;margin:0 auto;padding:20px 16px 40px;
-}
-
-/* ── HEADER ── */
-.hdr {
-  text-align:center;padding:28px 0 24px;
-  border-bottom:1px solid var(--cborder);
-  margin-bottom:24px;position:relative;
-}
-.hdr::after {
-  content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
-  width:220px;height:2px;
-  background:linear-gradient(90deg,transparent,var(--c),transparent);
-  box-shadow:0 0 16px var(--c);
-}
-.sweep {
-  position:absolute;top:0;left:-60%;width:50%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(0,229,255,.8),transparent);
-  animation:sweep 3s linear infinite;
-}
+/* HEADER */
+.hdr{text-align:center;padding:26px 0 20px;border-bottom:1px solid var(--cborder);margin-bottom:22px;position:relative}
+.hdr::after{content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:220px;height:2px;background:linear-gradient(90deg,transparent,var(--c),transparent);box-shadow:0 0 16px var(--c)}
+.sweep{position:absolute;top:0;left:-60%;width:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,255,.8),transparent);animation:sweep 3s linear infinite}
 @keyframes sweep{from{left:-60%}to{left:110%}}
+.title{font-size:clamp(1.3rem,4vw,2.3rem);letter-spacing:.3em;text-transform:uppercase;text-shadow:0 0 18px var(--c),0 0 40px rgba(0,229,255,.4);animation:flicker 6s infinite}
+.sub{font-size:.7rem;letter-spacing:.22em;color:var(--cdim);margin-top:6px}
+@keyframes flicker{0%,93%,100%{opacity:1}94%{opacity:.7}95%{opacity:1}97%{opacity:.5}98%{opacity:1}}
+.meta{margin-top:12px;display:flex;justify-content:center;flex-wrap:wrap;gap:34px;font-size:.74rem;letter-spacing:.1em}
+.meta b{color:var(--c)}
+.meta .lbl{color:rgba(0,229,255,.4);font-size:.62rem;letter-spacing:.16em}
 
-.title {
-  font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:.3em;text-transform:uppercase;
-  text-shadow:0 0 18px var(--c),0 0 40px rgba(0,229,255,.4);
-  animation:flicker 6s infinite;
-}
-.sub {
-  font-size:.7rem;letter-spacing:.25em;color:var(--cdim);margin-top:6px;
-}
-@keyframes flicker{
-  0%,93%,100%{opacity:1}
-  94%{opacity:.7}95%{opacity:1}97%{opacity:.5}98%{opacity:1}
-}
+/* CORNERS */
+.corners{position:relative}
+.corners i{position:absolute;width:14px;height:14px;border-color:var(--c);border-style:solid}
+.c-tl{top:0;left:0;border-width:2px 0 0 2px}.c-tr{top:0;right:0;border-width:2px 2px 0 0}
+.c-bl{bottom:0;left:0;border-width:0 0 2px 2px}.c-br{bottom:0;right:0;border-width:0 2px 2px 0}
 
-/* ── CORNERS ── */
-.corners {position:relative}
-.corners .c-tl,.corners .c-tr,.corners .c-bl,.corners .c-br {
-  position:absolute;width:14px;height:14px;border-color:var(--c);border-style:solid;
-}
-.corners .c-tl{top:0;left:0;border-width:2px 0 0 2px}
-.corners .c-tr{top:0;right:0;border-width:2px 2px 0 0}
-.corners .c-bl{bottom:0;left:0;border-width:0 0 2px 2px}
-.corners .c-br{bottom:0;right:0;border-width:0 2px 2px 0}
+/* PANEL */
+.panel{background:var(--cbg);border:1px solid var(--cborder);border-radius:6px;padding:16px;position:relative;overflow:hidden;backdrop-filter:blur(8px);margin-bottom:18px}
+.panel::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c),transparent)}
+.ptitle{font-size:.7rem;letter-spacing:.3em;color:var(--cdim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(0,229,255,.1)}
 
-/* ── PANEL ── */
-.panel {
-  background:var(--cbg);
-  border:1px solid var(--cborder);
-  border-radius:6px;padding:18px;
-  position:relative;overflow:hidden;
-  backdrop-filter:blur(8px);
-  margin-bottom:18px;
-}
-.panel::before {
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--c),transparent);
-}
-.ptitle {
-  font-size:.7rem;letter-spacing:.3em;color:var(--cdim);
-  text-transform:uppercase;margin-bottom:14px;
-  padding-bottom:8px;border-bottom:1px solid rgba(0,229,255,.1);
-}
+/* INFO BAR */
+.ibar{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-bottom:18px}
+.icard{background:var(--cbg);border:1px solid var(--cborder);border-radius:6px;padding:14px;text-align:center;position:relative;overflow:hidden}
+.icard::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c),transparent)}
+.ival{font-size:1.7rem;font-weight:bold;text-shadow:0 0 18px var(--c)}
+.ilbl{font-size:.62rem;letter-spacing:.16em;color:var(--cdim);text-transform:uppercase;margin-top:4px}
 
-/* ── INFO BAR ── */
-.ibar {
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-  gap:14px;margin-bottom:18px;
-}
-.icard {
-  background:var(--cbg);border:1px solid var(--cborder);
-  border-radius:6px;padding:14px;text-align:center;position:relative;overflow:hidden;
-}
-.icard::before {
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--c),transparent);
-}
-.ival {
-  font-size:1.7rem;font-weight:bold;
-  text-shadow:0 0 18px var(--c);
-}
-.ilbl {
-  font-size:.65rem;letter-spacing:.18em;color:var(--cdim);
-  text-transform:uppercase;margin-top:4px;
-}
+/* 3D VIEWPORT */
+#viewport{position:relative;width:100%;height:62vh;min-height:420px;border-radius:6px;overflow:hidden;background:#010a14;border:1px solid rgba(0,229,255,.12)}
+#scene3d{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#scene3d:active{cursor:grabbing}
+.hint{position:absolute;left:12px;bottom:10px;font-size:.66rem;color:rgba(0,229,255,.45);letter-spacing:.08em;pointer-events:none;line-height:1.5}
+.loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;color:var(--cdim);font-size:.8rem;letter-spacing:.2em}
+.loading .ring{width:46px;height:46px;border:2px solid rgba(0,229,255,.2);border-top-color:var(--c);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── SVG DENTAL CHART ── */
-.chart-wrap {
-  display:flex;justify-content:center;align-items:center;
-  padding:10px 0 4px;
-}
-#svg-dental {
-  filter:drop-shadow(0 0 18px rgba(0,229,255,.35));
-  animation:float 7s ease-in-out infinite;
-  width:100%;max-width:920px;height:auto;
-}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+/* VIEW CONTROLS */
+.vctrl{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:6px;z-index:5}
+.vbtn{background:rgba(1,10,24,.8);border:1px solid var(--cborder);color:var(--c);font-family:inherit;font-size:.66rem;letter-spacing:.08em;padding:7px 11px;border-radius:4px;cursor:pointer;transition:.18s;text-transform:uppercase;backdrop-filter:blur(6px)}
+.vbtn:hover{background:rgba(0,229,255,.15);border-color:var(--c);box-shadow:0 0 12px rgba(0,229,255,.3)}
+.vbtn.on{background:rgba(0,229,255,.2);border-color:var(--c)}
 
-.tooth-num {
-  fill:rgba(0,229,255,.8);
-  font-family:'Courier New',monospace;
-  font-size:10px;text-anchor:middle;
-  dominant-baseline:middle;pointer-events:none;
-}
-.qlabel {
-  fill:rgba(0,229,255,.22);
-  font-family:'Courier New',monospace;
-  font-size:11px;text-anchor:middle;letter-spacing:2px;
-}
-.archlabel {
-  fill:rgba(0,229,255,.35);
-  font-family:'Courier New',monospace;
-  font-size:12px;text-anchor:middle;letter-spacing:3px;
-  text-transform:uppercase;
-}
-.tooth-g {cursor:pointer}
-.tooth-g:hover .t-body{filter:brightness(1.6) drop-shadow(0 0 6px currentColor)}
+/* LEGEND */
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px}
+.leg-item{display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:4px;border:1px solid rgba(0,229,255,.1);font-size:.78rem;cursor:pointer;transition:.2s}
+.leg-item:hover,.leg-item.active{border-color:var(--c);background:rgba(0,229,255,.08)}
+.leg-dot{width:18px;height:18px;border-radius:4px;border:1.5px solid;flex-shrink:0}
 
-/* ── LEGEND ── */
-.legend {
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-  gap:8px;
-}
-.leg-item {
-  display:flex;align-items:center;gap:9px;
-  padding:7px 10px;border-radius:4px;
-  border:1px solid rgba(0,229,255,.1);
-  font-size:.78rem;cursor:pointer;transition:.2s;
-}
-.leg-item:hover,.leg-item.active {
-  border-color:var(--c);background:rgba(0,229,255,.08);
-}
-.leg-dot {
-  width:18px;height:18px;border-radius:3px;border:1.5px solid;flex-shrink:0;
-}
-
-/* ── TABLE ── */
-.qtable {
-  width:100%;border-collapse:collapse;font-size:.83rem;
-}
-.qtable th {
-  text-align:left;padding:9px 12px;
-  border-bottom:1px solid rgba(0,229,255,.25);
-  color:var(--cdim);font-weight:normal;
-  letter-spacing:.1em;font-size:.7rem;text-transform:uppercase;
-}
-.qtable td {
-  padding:9px 12px;border-bottom:1px solid rgba(0,229,255,.07);
-  color:rgba(0,229,255,.9);vertical-align:middle;
-}
+/* TABLE */
+.qtable{width:100%;border-collapse:collapse;font-size:.83rem}
+.qtable th{text-align:left;padding:9px 12px;border-bottom:1px solid rgba(0,229,255,.25);color:var(--cdim);font-weight:normal;letter-spacing:.1em;font-size:.68rem;text-transform:uppercase}
+.qtable td{padding:9px 12px;border-bottom:1px solid rgba(0,229,255,.07);color:rgba(0,229,255,.9);vertical-align:middle}
 .qtable tr:hover td{background:rgba(0,229,255,.04)}
-.qtable .total td {
-  border-top:1px solid rgba(0,229,255,.25);
-  border-bottom:none;color:var(--c);font-weight:bold;font-size:.95rem;
-}
-.tbadge {
-  display:inline-block;
-  border:1px solid;border-radius:3px;
-  padding:1px 6px;font-size:.72rem;margin:1px;
-}
-.tprice{text-align:right;font-family:'Courier New',monospace}
+.qtable .total td{border-top:1px solid rgba(0,229,255,.25);border-bottom:none;color:var(--c);font-weight:bold;font-size:.95rem}
+.tbadge{display:inline-block;border:1px solid;border-radius:3px;padding:1px 6px;font-size:.72rem;margin:1px;cursor:pointer}
+.tprice{text-align:right}
 
-/* ── TOOLTIP ── */
-#tip {
-  position:fixed;
-  background:rgba(1,10,24,.96);
-  border:1px solid var(--c);
-  border-radius:6px;padding:10px 14px;
-  font-size:.8rem;pointer-events:none;z-index:10000;
-  display:none;min-width:160px;
-  box-shadow:0 0 20px rgba(0,229,255,.3);
-}
-#tip-num{font-size:1.1rem;font-weight:bold;margin-bottom:4px}
+/* TOOLTIP */
+#tip{position:fixed;background:rgba(1,10,24,.96);border:1px solid var(--c);border-radius:6px;padding:10px 14px;font-size:.8rem;pointer-events:none;z-index:10000;display:none;min-width:160px;box-shadow:0 0 20px rgba(0,229,255,.3)}
+#tip-num{font-size:1.05rem;font-weight:bold;margin-bottom:4px}
 #tip-type{color:var(--cdim);font-size:.72rem}
 #tip-detail{margin-top:5px;font-size:.78rem}
 
-/* ── FOOTER ── */
-.foot {
-  text-align:center;color:rgba(0,229,255,.18);
-  font-size:.65rem;padding:16px;letter-spacing:.2em;
-}
-
-@media(max-width:600px){
-  .title{letter-spacing:.15em}
-  .qtable th,.qtable td{padding:7px 8px}
-}
+.foot{text-align:center;color:rgba(0,229,255,.18);font-size:.65rem;padding:16px;letter-spacing:.2em}
+@media(max-width:600px){.title{letter-spacing:.14em}.meta{gap:18px}.qtable th,.qtable td{padding:7px 8px}#viewport{height:54vh}}
 </style>
 </head>
 <body>
@@ -240,45 +104,40 @@ body::after {
   <!-- HEADER -->
   <div class="hdr corners">
     <div class="sweep"></div>
-    <div class="c-tl"></div><div class="c-tr"></div>
-    <div class="c-bl"></div><div class="c-br"></div>
-    <div class="title">Preventivo Dentistico</div>
-    <div class="sub">CAREDENT DENTAL EXPERTS &bull; FDI / ISO 3950</div>
-    <div style="margin-top:12px;display:flex;justify-content:center;gap:40px;font-size:.75rem;letter-spacing:.12em">
-      <span><span style="color:rgba(0,229,255,.4)">PAZIENTE</span><br>
-            <span style="color:var(--c);font-weight:bold" id="hdr-name"></span></span>
-      <span><span style="color:rgba(0,229,255,.4)">MEDICO</span><br>
-            <span style="color:rgba(0,229,255,.7)" id="hdr-doctor"></span></span>
-      <span><span style="color:rgba(0,229,255,.4)">DATA</span><br>
-            <span style="color:rgba(0,229,255,.7)" id="hdr-date"></span></span>
+    <i class="c-tl"></i><i class="c-tr"></i><i class="c-bl"></i><i class="c-br"></i>
+    <div class="title">Preventivo Dentistico 3D</div>
+    <div class="sub">CAREDENT DENTAL EXPERTS &bull; OLOGRAMMA ARCATA &bull; FDI / ISO 3950</div>
+    <div class="meta">
+      <span><span class="lbl">PAZIENTE</span><br><b id="hdr-name"></b></span>
+      <span><span class="lbl">MEDICO</span><br><span id="hdr-doctor" style="color:rgba(0,229,255,.7)"></span></span>
+      <span><span class="lbl">DATA</span><br><span id="hdr-date" style="color:rgba(0,229,255,.7)"></span></span>
     </div>
   </div>
 
   <!-- INFO BAR -->
   <div class="ibar">
-    <div class="icard">
-      <div class="ival" id="i-teeth">—</div>
-      <div class="ilbl">Denti Presenti</div>
-    </div>
-    <div class="icard">
-      <div class="ival" id="i-treated">—</div>
-      <div class="ilbl">Da Trattare</div>
-    </div>
-    <div class="icard">
-      <div class="ival" id="i-total">€ 0</div>
-      <div class="ilbl">Totale Preventivo</div>
-    </div>
-    <div class="icard">
-      <div class="ival" id="i-sessions">—</div>
-      <div class="ilbl">Sedute Previste</div>
-    </div>
+    <div class="icard"><div class="ival" id="i-teeth">—</div><div class="ilbl">Denti Presenti</div></div>
+    <div class="icard"><div class="ival" id="i-treated">—</div><div class="ilbl">Da Trattare</div></div>
+    <div class="icard"><div class="ival" id="i-total">€ 0</div><div class="ilbl">Totale Preventivo</div></div>
+    <div class="icard"><div class="ival" id="i-sessions">—</div><div class="ilbl">Sedute Previste</div></div>
   </div>
 
-  <!-- DENTAL CHART -->
+  <!-- 3D VIEWPORT -->
   <div class="panel">
-    <div class="ptitle">&#9670; Mappa Dentale Interattiva — clicca un dente per evidenziarlo</div>
-    <div class="chart-wrap">
-      <svg id="svg-dental" viewBox="0 0 920 560"></svg>
+    <div class="ptitle">&#9670; Ologramma 3D — trascina per ruotare, scroll/pinch per zoom, click su un dente</div>
+    <div id="viewport">
+      <canvas id="scene3d"></canvas>
+      <div class="vctrl">
+        <button class="vbtn" data-view="front">Fronte</button>
+        <button class="vbtn" data-view="top">Sopra</button>
+        <button class="vbtn" data-view="right">Lato Dx</button>
+        <button class="vbtn" data-view="left">Lato Sx</button>
+        <button class="vbtn on" id="btn-gum">Gengive</button>
+        <button class="vbtn on" id="btn-roots">Radici</button>
+        <button class="vbtn on" id="btn-spin">Rotazione</button>
+      </div>
+      <div class="hint">🖱️ Trascina = ruota &nbsp;•&nbsp; Scroll = zoom &nbsp;•&nbsp; Click = dettaglio dente</div>
+      <div class="loading" id="loading"><div class="ring"></div><div>CARICAMENTO OLOGRAMMA…</div></div>
     </div>
   </div>
 
@@ -292,448 +151,458 @@ body::after {
   <div class="panel">
     <div class="ptitle">&#9670; Dettaglio Preventivo</div>
     <table class="qtable">
-      <thead>
-        <tr>
-          <th>Dente/i</th>
-          <th>Trattamento</th>
-          <th>Note</th>
-          <th class="tprice">Importo (€)</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Dente/i</th><th>Trattamento</th><th>Note</th><th class="tprice">Importo (€)</th></tr></thead>
       <tbody id="tbody"></tbody>
-      <tfoot>
-        <tr class="total">
-          <td colspan="3">TOTALE PREVENTIVO IVA INCLUSA</td>
-          <td class="tprice" id="grand-total">€ 0,00</td>
-        </tr>
-      </tfoot>
+      <tfoot><tr class="total"><td colspan="3">TOTALE PREVENTIVO</td><td class="tprice" id="grand-total">€ 0,00</td></tr></tfoot>
     </table>
   </div>
 
-  <div class="foot">
-    DOCUMENTO GENERATO ELETTRONICAMENTE &bull; NON VALIDO AI FINI FISCALI &bull;
-    <span id="doc-date"></span>
-  </div>
+  <div class="foot">DOCUMENTO GENERATO ELETTRONICAMENTE &bull; NON VALIDO AI FINI FISCALI &bull; <span id="doc-date"></span></div>
 </div>
 
-<!-- TOOLTIP -->
-<div id="tip">
-  <div id="tip-num"></div>
-  <div id="tip-type"></div>
-  <div id="tip-detail"></div>
-</div>
+<div id="tip"><div id="tip-num"></div><div id="tip-type"></div><div id="tip-detail"></div></div>
 
+<!-- ============ DATI (modificabili) ============ -->
 <script>
-/* ============================================================
-   CONFIGURAZIONE — modifica questa sezione con i dati reali
-   ============================================================ */
-
 const PATIENT = {
-  name:     "HAYAT DERRIANI",
-  doctor:   "Dr. Simone Selvaggio / Dott. Andrea Vantà",
-  date:     "22/09/2025",
-  sessions: "—"
+  name:"HAYAT DERRIANI",
+  doctor:"Dr. Simone Selvaggio / Dott. Andrea Vantà",
+  date:"22/09/2025",
+  sessions:"—"
 };
-
-/* Tipo per colore sulla mappa — ogni dente ha UN tipo primario */
 const TREATMENTS = {
-  11: { type: 'filling',    note: 'III Classe di Black',                         price: 140  },
-  21: { type: 'filling',    note: 'III Classe di Black',                         price: 140  },
-  22: { type: 'rootcanal',  note: 'Endodonzia + perno + corona ceramica',        price: 823  },
-  23: { type: 'rootcanal',  note: 'Ritrattamento endo + perno + corona ceramica',price: 935  },
-  28: { type: 'extraction', note: 'Avulsione chirurgica',                        price:  60  },
-  34: { type: 'filling',    note: 'II Classe di Black',                          price: 120  },
-  35: { type: 'implant',    note: 'Posizionamento impianto',                     price: 840  },
-  36: { type: 'crown',      note: 'Corona in ceramica',                          price: 415  },
-  37: { type: 'implant',    note: 'Posizionamento impianto + corona ceramica',   price: 1255 },
-  38: { type: 'extraction', note: 'Avulsione chirurgica',                        price:  60  },
-  46: { type: 'crown',      note: 'Corona ceramica + elemento provvisorio',      price: 463  },
-  48: { type: 'extraction', note: 'Avulsione chirurgica',                        price:  60  },
+  11:{type:'filling',   note:'III Classe di Black',                          price:140},
+  21:{type:'filling',   note:'III Classe di Black',                          price:140},
+  22:{type:'rootcanal', note:'Endodonzia + perno + corona ceramica',         price:823},
+  23:{type:'rootcanal', note:'Ritrattamento endo + perno + corona ceramica', price:935},
+  28:{type:'extraction',note:'Avulsione chirurgica',                         price:60},
+  34:{type:'filling',   note:'II Classe di Black',                           price:120},
+  35:{type:'implant',   note:'Posizionamento impianto',                      price:840},
+  36:{type:'crown',     note:'Corona in ceramica',                           price:415},
+  37:{type:'implant',   note:'Posizionamento impianto + corona ceramica',    price:1255},
+  38:{type:'extraction',note:'Avulsione chirurgica',                         price:60},
+  46:{type:'crown',     note:'Corona ceramica + elemento provvisorio',       price:463},
+  48:{type:'extraction',note:'Avulsione chirurgica',                         price:60},
 };
-
-/* Denti mancanti (slot vuoti con X) */
 const MISSING = [];
-
-/* Ponti: ogni sotto-array è un gruppo che forma un ponte */
 const BRIDGES = [];
-
-/* Righe dettaglio tabella preventivo (voce per voce dal documento) */
 const QUOTE_ITEMS = [
-  { teeth:[28,38,48], label:'Avulsione chirurgica (×3)',                              note:'Denti 28, 38, 48',                             price: 180  },
-  { teeth:[35],       label:'Posizionamento impianto',                                note:'Moncone implantare + prestazione chirurgica',   price: 840  },
-  { teeth:[37],       label:'Posizionamento impianto',                                note:'Moncone implantare + prestazione chirurgica',   price: 840  },
-  { teeth:[22],       label:'Trattamento endodontico monocanalare',                   note:'Tecnica e materiale da otturazione',            price: 180  },
-  { teeth:[22],       label:'Ricostruzione con ferri endocanalari',                   note:'Qualsiasi numero di pareti',                   price: 180  },
-  { teeth:[23],       label:'Ritrattamento endodontico monocanalare',                 note:'Tecnica e materiale da otturazione',            price: 280  },
-  { teeth:[23],       label:'Ricostruzione con ferri endocanalari',                   note:'Qualsiasi numero di pareti',                   price: 180  },
-  { teeth:[22,23,46], label:'Elemento provvisorio in resina (×3)',                    note:'Per elemento',                                 price: 144  },
-  { teeth:[22],       label:'Corona/faccetta in ceramica su substrato',               note:'Elemento definitivo',                          price: 415  },
-  { teeth:[23],       label:'Corona/faccetta in ceramica su substrato',               note:'Elemento definitivo',                          price: 415  },
-  { teeth:[36],       label:'Corona/faccetta in ceramica su substrato',               note:'Elemento definitivo',                          price: 415  },
-  { teeth:[37],       label:'Corona/faccetta in ceramica su substrato',               note:'Su impianto, elemento definitivo',              price: 415  },
-  { teeth:[46],       label:'Corona/faccetta in ceramica su substrato',               note:'Elemento definitivo',                          price: 415  },
-  { teeth:[34],       label:'II Classe di Black',                                     note:'Premolari e molari',                           price: 120  },
-  { teeth:[11],       label:'III Classe di Black',                                    note:'Incisivi e canini',                            price: 140  },
-  { teeth:[21],       label:'III Classe di Black',                                    note:'Incisivi e canini',                            price: 140  },
-  { teeth:[23],       label:'Radiografia endorale',                                   note:'',                                             price:  12  },
-  { teeth:[],         label:'Radiografia endorale bocca completa',                    note:'',                                             price:  12  },
+  {teeth:[28,38,48],label:'Avulsione chirurgica (×3)',                  note:'Denti 28, 38, 48',                            price:180},
+  {teeth:[35],      label:'Posizionamento impianto',                    note:'Moncone implantare + prestazione chirurgica', price:840},
+  {teeth:[37],      label:'Posizionamento impianto',                    note:'Moncone implantare + prestazione chirurgica', price:840},
+  {teeth:[22],      label:'Trattamento endodontico monocanalare',       note:'Tecnica e materiale da otturazione',          price:180},
+  {teeth:[22],      label:'Ricostruzione con ferri endocanalari',       note:'Qualsiasi numero di pareti',                  price:180},
+  {teeth:[23],      label:'Ritrattamento endodontico monocanalare',     note:'Tecnica e materiale da otturazione',          price:280},
+  {teeth:[23],      label:'Ricostruzione con ferri endocanalari',       note:'Qualsiasi numero di pareti',                  price:180},
+  {teeth:[22,23,46],label:'Elemento provvisorio in resina (×3)',        note:'Per elemento',                                price:144},
+  {teeth:[22],      label:'Corona/faccetta in ceramica su substrato',   note:'Elemento definitivo',                         price:415},
+  {teeth:[23],      label:'Corona/faccetta in ceramica su substrato',   note:'Elemento definitivo',                         price:415},
+  {teeth:[36],      label:'Corona/faccetta in ceramica su substrato',   note:'Elemento definitivo',                         price:415},
+  {teeth:[37],      label:'Corona/faccetta in ceramica su substrato',   note:'Su impianto, elemento definitivo',            price:415},
+  {teeth:[46],      label:'Corona/faccetta in ceramica su substrato',   note:'Elemento definitivo',                         price:415},
+  {teeth:[34],      label:'II Classe di Black',                          note:'Premolari e molari',                          price:120},
+  {teeth:[11],      label:'III Classe di Black',                         note:'Incisivi e canini',                           price:140},
+  {teeth:[21],      label:'III Classe di Black',                         note:'Incisivi e canini',                           price:140},
+  {teeth:[23],      label:'Radiografia endorale',                        note:'',                                            price:12},
+  {teeth:[],        label:'Radiografia endorale bocca completa',         note:'',                                            price:12},
 ];
-
-/* ============================================================
-   TIPI DI TRATTAMENTO (non modificare salvo necessità)
-   ============================================================ */
 const TYPES = {
-  normal:    { label:'Sano',             stroke:'#00c8ff', fill:'rgba(0,200,255,.13)' },
-  crown:     { label:'Corona',           stroke:'#ffaa00', fill:'rgba(255,170,0,.22)'  },
-  implant:   { label:'Impianto',         stroke:'#00ff88', fill:'rgba(0,255,136,.22)'  },
-  extraction:{ label:'Estrazione',       stroke:'#ff4455', fill:'rgba(255,68,85,.22)'  },
-  filling:   { label:'Otturazione',      stroke:'#bb44ff', fill:'rgba(187,68,255,.22)' },
-  missing:   { label:'Mancante',         stroke:'#445566', fill:'rgba(40,55,75,.25)'   },
-  bridge:    { label:'Ponte',            stroke:'#ffd000', fill:'rgba(255,208,0,.15)'  },
-  cleaning:  { label:'Igiene',           stroke:'#00ffff', fill:'rgba(0,255,255,.2)'   },
-  rootcanal: { label:'Devitalizzazione', stroke:'#ff7700', fill:'rgba(255,119,0,.22)'  },
-  inlay:     { label:'Intarsio',         stroke:'#44ddff', fill:'rgba(68,221,255,.2)'  },
+  normal:    {label:'Sano',             hex:'#3fb6ff'},
+  filling:   {label:'Otturazione',      hex:'#bb55ff'},
+  rootcanal: {label:'Devitalizz.+Corona',hex:'#ff8a1e'},
+  crown:     {label:'Corona',           hex:'#ffc400'},
+  implant:   {label:'Impianto',         hex:'#22ff95'},
+  extraction:{label:'Estrazione',       hex:'#ff445c'},
+  missing:   {label:'Mancante',         hex:'#5a6b7a'},
+  bridge:    {label:'Ponte',            hex:'#ffd000'},
+  cleaning:  {label:'Igiene',           hex:'#00ffff'},
 };
-
-/* ============================================================
-   GEOMETRIA DELL'ARCATA
-   ============================================================ */
-const W = 920, H = 560, CX = W/2;
-const UPPER_CY = 145, LOWER_CY = 415;
-const ARCH_RX = 355, ARCH_RY = 90;
-const GAP = 4;
-
-// Dimensioni dente in base alla forma
-function dims(shape, upper) {
-  switch(shape){
-    case 'molar':    return { w:29, h: upper?22:25 };
-    case 'premolar': return { w:21, h: upper?18:21 };
-    case 'canine':   return { w:17, h: upper?23:25 };
-    default:         return { w:18, h: upper?18:18 }; // incisor
-  }
-}
-function shape(n) {
-  const d = n % 10;
-  if(d>=6) return 'molar';
-  if(d>=4) return 'premolar';
-  if(d===3) return 'canine';
-  return 'incisor';
-}
-
-function buildPositions() {
-  const pos = {};
-  // Upper: viewer left→right = 18..11 | 21..28
-  const upper = [18,17,16,15,14,13,12,11, 21,22,23,24,25,26,27,28];
-  // Lower: viewer left→right = 48..41 | 31..38
-  const lower = [48,47,46,45,44,43,42,41, 31,32,33,34,35,36,37,38];
-
-  function layout(row, cy, isUpper) {
-    const ws = row.map(t => dims(shape(t), isUpper).w);
-    const total = ws.reduce((a,b)=>a+b,0) + GAP*(row.length-1);
-    let x = CX - total/2;
-    row.forEach((t,i) => {
-      const w = ws[i];
-      const cx = x + w/2;
-      const nx = (cx - CX) / ARCH_RX;           // −1..1
-      const ny = Math.sqrt(Math.max(0, 1-nx*nx));
-      const curveY = isUpper
-        ? cy + ARCH_RY*ny    // arco va verso il basso
-        : cy - ARCH_RY*ny;   // arco va verso l'alto
-      const d = dims(shape(t), isUpper);
-      pos[t] = { cx, cy: curveY, w: d.w, h: d.h, upper: isUpper };
-      x += w + GAP;
-    });
-  }
-  layout(upper, UPPER_CY, true);
-  layout(lower, LOWER_CY, false);
-  return pos;
-}
-
-/* ============================================================
-   DETERMINAZIONE TIPO DENTE
-   ============================================================ */
-function toothType(n) {
+function toothType(n){
   if(MISSING.includes(n)) return 'missing';
   for(const b of BRIDGES) if(b.includes(n)) return 'bridge';
   return TREATMENTS[n]?.type || 'normal';
 }
+</script>
 
-/* ============================================================
-   RENDERING SVG
-   ============================================================ */
-function renderSVG() {
-  const svg = document.getElementById('svg-dental');
-  const pos = buildPositions();
-  let h = '';
-
-  h += `<defs>
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="2.5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="sglow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-  </defs>`;
-
-  // Sfondo arcate (area gengiva)
-  h += `<path d="M110,${UPPER_CY} Q${CX},${UPPER_CY+ARCH_RY+50} ${W-110},${UPPER_CY}"
-    fill="none" stroke="rgba(0,229,255,.07)" stroke-width="46" stroke-linecap="round"/>`;
-  h += `<path d="M110,${LOWER_CY} Q${CX},${LOWER_CY-ARCH_RY-50} ${W-110},${LOWER_CY}"
-    fill="none" stroke="rgba(0,229,255,.07)" stroke-width="46" stroke-linecap="round"/>`;
-
-  // Contorno arcate tratteggiato
-  h += `<path d="M110,${UPPER_CY} Q${CX},${UPPER_CY+ARCH_RY+28} ${W-110},${UPPER_CY}"
-    fill="none" stroke="rgba(0,229,255,.13)" stroke-width="1" stroke-dasharray="5,4"/>`;
-  h += `<path d="M110,${LOWER_CY} Q${CX},${LOWER_CY-ARCH_RY-28} ${W-110},${LOWER_CY}"
-    fill="none" stroke="rgba(0,229,255,.13)" stroke-width="1" stroke-dasharray="5,4"/>`;
-
-  // Linea mediana verticale
-  h += `<line x1="${CX}" y1="30" x2="${CX}" y2="${H-28}"
-    stroke="rgba(0,229,255,.14)" stroke-width="1" stroke-dasharray="7,4"/>`;
-
-  // Etichette arcate
-  h += `<text x="${CX}" y="22" class="archlabel">Arcata Superiore</text>`;
-  h += `<text x="${CX}" y="${H-10}" class="archlabel">Arcata Inferiore</text>`;
-
-  // Etichette quadranti
-  h += `<text x="74" y="78" class="qlabel">Q1</text>`;
-  h += `<text x="${W-74}" y="78" class="qlabel">Q2</text>`;
-  h += `<text x="74" y="${H-42}" class="qlabel">Q4</text>`;
-  h += `<text x="${W-74}" y="${H-42}" class="qlabel">Q3</text>`;
-
-  // Separatori quadranti orizzontali
-  h += `<line x1="${CX-50}" y1="${H/2}" x2="${CX+50}" y2="${H/2}"
-    stroke="rgba(0,229,255,.12)" stroke-width="1"/>`;
-
-  // Ponti (linea sopra/sotto i denti)
-  for(const bridge of BRIDGES) {
-    const pts = bridge.map(n=>pos[n]).filter(Boolean);
-    if(pts.length<2) continue;
-    const minX = Math.min(...pts.map(p=>p.cx-p.w/2));
-    const maxX = Math.max(...pts.map(p=>p.cx+p.w/2));
-    const p0 = pts[0];
-    const ly = p0.upper
-      ? p0.cy - p0.h/2 - 3
-      : p0.cy + p0.h/2 + 3;
-    h += `<line x1="${minX}" y1="${ly}" x2="${maxX}" y2="${ly}"
-      stroke="rgba(255,208,0,.8)" stroke-width="3" stroke-linecap="round"
-      filter="url(#glow)"/>`;
-  }
-
-  // Denti
-  for(const [ks, p] of Object.entries(pos)) {
-    const n = parseInt(ks);
-    const tp = toothType(n);
-    const col = TYPES[tp] || TYPES.normal;
-    const sh = shape(n);
-    const rx = p.w/2, ry = p.h/2;
-    // Denti superiori crescono verso l'alto dal punto curvo
-    const by = p.upper ? p.cy - p.h : p.cy;   // top-left y del rettangolo
-    const numY = p.upper ? p.cy - p.h - 8 : p.cy + p.h + 11;
-
-    h += `<g class="tooth-g" data-n="${n}"
-      onmouseenter="tipShow(event,${n})"
-      onmouseleave="tipHide()"
-      onclick="pick(${n})">`;
-
-    if(tp==='missing') {
-      h += `<rect class="t-body" x="${p.cx-rx}" y="${by}" width="${p.w}" height="${p.h}"
-        rx="4" fill="${col.fill}" stroke="${col.stroke}" stroke-width="1"
-        stroke-dasharray="4,2"/>`;
-      h += `<line x1="${p.cx-rx+3}" y1="${by+3}" x2="${p.cx+rx-3}" y2="${by+p.h-3}"
-        stroke="${col.stroke}" stroke-width="1.5" opacity=".5"/>`;
-      h += `<line x1="${p.cx+rx-3}" y1="${by+3}" x2="${p.cx-rx+3}" y2="${by+p.h-3}"
-        stroke="${col.stroke}" stroke-width="1.5" opacity=".5"/>`;
-    } else {
-      const r = sh==='incisor'?3:sh==='canine'?4:5;
-      h += `<rect class="t-body" x="${p.cx-rx}" y="${by}" width="${p.w}" height="${p.h}"
-        rx="${r}" fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.5"
-        filter="url(#glow)"/>`;
-
-      // Dettagli morfologici interni
-      if(sh==='molar') {
-        h += `<line x1="${p.cx-rx+6}" y1="${by+3}" x2="${p.cx-rx+6}" y2="${by+p.h-3}"
-          stroke="${col.stroke}" stroke-width=".6" opacity=".4"/>`;
-        h += `<line x1="${p.cx+rx-6}" y1="${by+3}" x2="${p.cx+rx-6}" y2="${by+p.h-3}"
-          stroke="${col.stroke}" stroke-width=".6" opacity=".4"/>`;
-        h += `<line x1="${p.cx-rx+2}" y1="${by+p.h/2}" x2="${p.cx+rx-2}" y2="${by+p.h/2}"
-          stroke="${col.stroke}" stroke-width=".5" opacity=".35"/>`;
-      } else if(sh==='canine') {
-        const tipY = p.upper ? by+4 : by+p.h-4;
-        h += `<polygon points="${p.cx},${tipY} ${p.cx-rx/2+1},${by+p.h/2} ${p.cx+rx/2-1},${by+p.h/2}"
-          fill="none" stroke="${col.stroke}" stroke-width=".6" opacity=".45"/>`;
-      } else if(sh==='premolar') {
-        h += `<line x1="${p.cx}" y1="${by+3}" x2="${p.cx}" y2="${by+p.h-3}"
-          stroke="${col.stroke}" stroke-width=".6" opacity=".35"/>`;
-      }
-
-      // Impianto: barra trasversale
-      if(tp==='implant') {
-        const baseY = p.upper ? by : by+p.h;
-        const dir = p.upper ? -1 : 1;
-        h += `<line x1="${p.cx}" y1="${baseY}" x2="${p.cx}" y2="${baseY+dir*9}"
-          stroke="${col.stroke}" stroke-width="2" opacity=".75"/>`;
-        h += `<line x1="${p.cx-5}" y1="${baseY+dir*5}" x2="${p.cx+5}" y2="${baseY+dir*5}"
-          stroke="${col.stroke}" stroke-width="2" opacity=".75"/>`;
-      }
-      // Devitalizzazione: punto centrale
-      if(tp==='rootcanal') {
-        h += `<circle cx="${p.cx}" cy="${by+p.h/2}" r="${Math.min(rx,ry)/2.5}"
-          fill="${col.stroke}" opacity=".45"/>`;
-      }
-    }
-
-    // Numero dente
-    h += `<text x="${p.cx}" y="${numY}" class="tooth-num">${n}</text>`;
-    h += `</g>`;
-  }
-
-  svg.innerHTML = h;
+<!-- ============ HTML PARTS: legenda, tabella, tooltip ============ -->
+<script>
+function renderHeader(){
+  hdrName.textContent=PATIENT.name; hdrDoctor.textContent=PATIENT.doctor; hdrDate.textContent=PATIENT.date;
+  document.getElementById('doc-date').textContent=PATIENT.date;
 }
+const hdrName=document.getElementById('hdr-name'),
+      hdrDoctor=document.getElementById('hdr-doctor'),
+      hdrDate=document.getElementById('hdr-date');
 
-/* ============================================================
-   LEGENDA
-   ============================================================ */
-function renderLegend() {
-  const used = new Set(['normal']);
+function renderLegend(){
+  const used=new Set(['normal']);
   Object.values(TREATMENTS).forEach(t=>used.add(t.type));
   if(MISSING.length) used.add('missing');
   if(BRIDGES.length) used.add('bridge');
-  // Ordine logico di visualizzazione
-  const ORDER = ['normal','filling','rootcanal','crown','implant','extraction','missing','bridge','cleaning','inlay'];
-  const sorted = ORDER.filter(k=>used.has(k)).concat([...used].filter(k=>!ORDER.includes(k)));
-
-  document.getElementById('legend').innerHTML = sorted.map(tp=>{
-    const t = TYPES[tp];
-    if(!t) return '';
-    // Conta denti con questo tipo
-    const cnt = Object.values(TREATMENTS).filter(tr=>tr.type===tp).length
-               + (tp==='missing' ? MISSING.length : 0);
-    const badge = cnt ? ` <span style="opacity:.5;font-size:.7rem">(${cnt})</span>` : '';
+  const ORDER=['normal','filling','rootcanal','crown','implant','extraction','missing','bridge','cleaning'];
+  const sorted=ORDER.filter(k=>used.has(k));
+  document.getElementById('legend').innerHTML=sorted.map(tp=>{
+    const t=TYPES[tp];
+    const cnt=Object.values(TREATMENTS).filter(x=>x.type===tp).length+(tp==='missing'?MISSING.length:0);
+    const badge=cnt?` <span style="opacity:.5;font-size:.7rem">(${cnt})</span>`:'';
     return `<div class="leg-item" onclick="filterType('${tp}')">
-      <div class="leg-dot" style="background:${t.fill};border-color:${t.stroke}"></div>
-      <span>${t.label}${badge}</span>
-    </div>`;
+      <div class="leg-dot" style="background:${t.hex}33;border-color:${t.hex}"></div>
+      <span>${t.label}${badge}</span></div>`;
   }).join('');
 }
 
-/* ============================================================
-   TABELLA PREVENTIVO
-   ============================================================ */
-function renderTable() {
-  const tbody = document.getElementById('tbody');
-  const items = typeof QUOTE_ITEMS !== 'undefined' ? QUOTE_ITEMS : [];
-  let total = 0;
+function renderTable(){
+  const tbody=document.getElementById('tbody'); let total=0;
+  tbody.innerHTML=QUOTE_ITEMS.map(item=>{
+    total+=item.price||0;
+    const first=item.teeth[0];
+    const col=first?TYPES[toothType(first)].hex:TYPES.normal.hex;
+    const badges=item.teeth.map(n=>`<span class="tbadge" style="border-color:${TYPES[toothType(n)].hex};color:${TYPES[toothType(n)].hex}" onclick="event.stopPropagation();pick(${n})">${n}</span>`).join('');
+    const clk=first?`onclick="pick(${first})"`:'';
+    return `<tr ${clk} style="${first?'cursor:pointer':''}">
+      <td>${badges||'<span style="color:rgba(0,229,255,.3)">—</span>'}</td>
+      <td style="color:${col}">${item.label}</td>
+      <td style="color:rgba(0,229,255,.55);font-size:.78rem">${item.note||'—'}</td>
+      <td class="tprice">€ ${(item.price||0).toFixed(2).replace('.',',')}</td></tr>`;
+  }).join('');
+  document.getElementById('grand-total').textContent='€ '+total.toLocaleString('it-IT',{minimumFractionDigits:2});
+  document.getElementById('i-total').textContent='€ '+Math.round(total).toLocaleString('it-IT');
+  document.getElementById('i-treated').textContent=Object.keys(TREATMENTS).length+MISSING.length;
+  document.getElementById('i-sessions').textContent=PATIENT.sessions;
+  document.getElementById('i-teeth').textContent=28-MISSING.length;
+}
 
-  if(!items.length) {
-    // fallback: usa TREATMENTS aggregati per dente
-    const entries = Object.entries(TREATMENTS);
-    tbody.innerHTML = entries.map(([n, t])=>{
-      const tp = TYPES[t.type] || TYPES.normal;
-      total += t.price||0;
-      return `<tr onclick="pick(${n})" style="cursor:pointer">
-        <td><span class="tbadge" style="border-color:${tp.stroke};color:${tp.stroke}">${n}</span></td>
-        <td style="color:${tp.stroke}">${tp.label}</td>
-        <td style="color:rgba(0,229,255,.6)">${t.note||'—'}</td>
-        <td class="tprice">€ ${(t.price||0).toFixed(2).replace('.',',')}</td>
-      </tr>`;
-    }).join('');
+/* tooltip */
+const tip=document.getElementById('tip');
+function tipShow(n,clientX,clientY){
+  const tp=toothType(n), col=TYPES[tp].hex, tr=TREATMENTS[n];
+  document.getElementById('tip-num').textContent='Dente '+n;
+  document.getElementById('tip-num').style.color=col;
+  document.getElementById('tip-type').textContent=TYPES[tp].label;
+  document.getElementById('tip-detail').textContent=tr
+    ? `€ ${(tr.price||0).toFixed(2).replace('.',',')} • ${tr.note}`
+    : (MISSING.includes(n)?'Dente mancante':'Nessun trattamento previsto');
+  tip.style.display='block'; tip.style.left=(clientX+16)+'px'; tip.style.top=(clientY-12)+'px';
+}
+function tipHide(){tip.style.display='none';}
+
+let _filter=null;
+function filterType(tp){
+  _filter=(_filter===tp)?null:tp;
+  document.querySelectorAll('.leg-item').forEach(li=>li.classList.toggle('active',li.textContent.trim().startsWith(TYPES[_filter]?.label||'\0')));
+  if(window.__applyFilter) window.__applyFilter(_filter);
+}
+
+renderHeader(); renderLegend(); renderTable();
+</script>
+
+<!-- ============ THREE.JS 3D ENGINE ============ -->
+<script type="importmap">
+{
+  "imports":{
+    "three":"https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+const canvas = document.getElementById('scene3d');
+const viewport = document.getElementById('viewport');
+
+/* ---------- scene / camera / renderer ---------- */
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 2000);
+camera.position.set(12,14,72);
+
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setClearColor(0x010a14, 1);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.15;
+
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.minDistance = 34;
+controls.maxDistance = 150;
+controls.target.set(0,0,-2);
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.9;
+
+/* lights */
+scene.add(new THREE.AmbientLight(0x335a6e, 1.3));
+const p1=new THREE.PointLight(0x00e5ff,1.3,400); p1.position.set(0,45,55); scene.add(p1);
+const p2=new THREE.PointLight(0x0066ff,0.9,400); p2.position.set(-50,20,-30); scene.add(p2);
+const p3=new THREE.PointLight(0x00ffaa,0.6,400); p3.position.set(50,-20,20); scene.add(p3);
+const dir=new THREE.DirectionalLight(0xffffff,0.4); dir.position.set(0,60,30); scene.add(dir);
+
+/* bloom */
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene,camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(1,1), 0.75, 0.6, 0.12);
+composer.addPass(bloom);
+
+/* ---------- helpers ---------- */
+const hexInt = h => parseInt(h.replace('#',''),16);
+const colorOf = fdi => hexInt(TYPES[toothType(fdi)].hex);
+function lighten(int,amt=0.45){ return new THREE.Color(int).lerp(new THREE.Color(0xffffff),amt); }
+
+/* ---------- arch geometry ---------- */
+const SLOT_ANGLE = [12,22,34,48,62,78,95,112].map(d=>d*Math.PI/180); // central incisor → 3rd molar
+const ARCH_A = 23, ARCH_B = 31, Z_OFF = 5;
+function shapeOf(idx){ return idx<2?'incisor':idx===2?'canine':idx<5?'premolar':'molar'; }
+const DIMS = {
+  incisor:{md:5.2,h:6.6,bl:2.6,rootH:12,rootR:1.5,roots:1},
+  canine: {md:5.2,h:8.2,bl:4.2,rootH:15,rootR:1.9,roots:1,cusp:true},
+  premolar:{md:5.6,h:6.0,bl:5.4,rootH:12,rootR:1.9,roots:1},
+  molar:  {md:7.6,h:5.6,bl:7.0,rootH:11,rootR:1.8,roots:2},
+};
+function archPos(idx,side){
+  const t=SLOT_ANGLE[idx];
+  return { x: ARCH_A*Math.sin(t)*side, z: ARCH_B*Math.cos(t)-Z_OFF };
+}
+
+/* ---------- gum ridges ---------- */
+const gumGroup = new THREE.Group();
+function buildGum(upper){
+  const pts=[];
+  for(let deg=-120;deg<=120;deg+=4){
+    const t=deg*Math.PI/180;
+    pts.push(new THREE.Vector3((ARCH_A+1.2)*Math.sin(t), upper?6.4:-6.4, ARCH_B*Math.cos(t)-Z_OFF));
+  }
+  const curve=new THREE.CatmullRomCurve3(pts);
+  const geo=new THREE.TubeGeometry(curve,90,3.8,14,false);
+  const mat=new THREE.MeshStandardMaterial({color:0x0a4a5e,emissive:0x07303d,emissiveIntensity:.5,transparent:true,opacity:.22,roughness:.6,metalness:.1,side:THREE.DoubleSide});
+  const mesh=new THREE.Mesh(geo,mat);
+  gumGroup.add(mesh);
+  const edges=new THREE.LineSegments(new THREE.EdgesGeometry(geo,40),new THREE.LineBasicMaterial({color:0x0bd0ff,transparent:true,opacity:.18}));
+  gumGroup.add(edges);
+}
+buildGum(true); buildGum(false);
+scene.add(gumGroup);
+
+/* ---------- hologram base ring ---------- */
+const baseGrp=new THREE.Group();
+[30,24,18].forEach((r,i)=>{
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(r,0.18,8,90),
+    new THREE.MeshBasicMaterial({color:0x00e5ff,transparent:true,opacity:0.35-i*0.08}));
+  ring.rotation.x=Math.PI/2; ring.position.y=-26-i*1.5; baseGrp.add(ring);
+});
+scene.add(baseGrp);
+
+/* ---------- build a tooth ---------- */
+const teeth=[];           // {fdi, group, parts:[mesh], edges:[lines], roots:[mesh]}
+const crownMeshes=[];     // for raycasting
+function makeTooth(fdi){
+  const q=Math.floor(fdi/10), idx=(fdi%10)-1;
+  const upper=(q===1||q===2);
+  const side=(q===1||q===4)?-1:1;
+  const sh=shapeOf(idx), d=DIMS[sh];
+  const {x,z}=archPos(idx,side);
+  const type=toothType(fdi);
+  const col=colorOf(fdi);
+
+  const inner=new THREE.Group();
+  const parts=[], edgeList=[], rootList=[];
+
+  const mat=new THREE.MeshStandardMaterial({
+    color:col, emissive:col, emissiveIntensity:0.42,
+    metalness:0.25, roughness:0.32, transparent:true, opacity:0.82
+  });
+
+  /* crown */
+  const crownGeo=new RoundedBoxGeometry(d.md,d.h,d.bl,4,Math.min(d.md,d.bl)*0.22);
+  const crown=new THREE.Mesh(crownGeo,mat);
+  crown.position.y=d.h/2;
+  crown.userData.fdi=fdi;
+  inner.add(crown); parts.push(crown); crownMeshes.push(crown);
+  const ce=new THREE.LineSegments(new THREE.EdgesGeometry(crownGeo,28),new THREE.LineBasicMaterial({color:lighten(col),transparent:true,opacity:0.55}));
+  ce.position.copy(crown.position); inner.add(ce); edgeList.push(ce);
+
+  /* canine cusp */
+  if(d.cusp){
+    const cusp=new THREE.Mesh(new THREE.ConeGeometry(d.md*0.34,d.h*0.4,10),mat);
+    cusp.position.y=d.h+ d.h*0.18; inner.add(cusp); parts.push(cusp);
+  }
+
+  /* implant: visible titanium screw instead of natural root */
+  if(type==='implant'){
+    const screwMat=new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:0.5,metalness:0.8,roughness:0.25,transparent:true,opacity:0.9});
+    const screw=new THREE.Mesh(new THREE.CylinderGeometry(d.rootR*0.9,d.rootR*0.55,d.rootH*0.9,10),screwMat);
+    screw.position.y=-d.rootH*0.45; inner.add(screw); parts.push(screw); rootList.push(screw);
+    // thread rings
+    for(let k=0;k<5;k++){
+      const ring=new THREE.Mesh(new THREE.TorusGeometry(d.rootR*0.85-k*0.12,0.16,6,16),screwMat);
+      ring.rotation.x=Math.PI/2; ring.position.y=-2-k*(d.rootH*0.8/5); inner.add(ring); parts.push(ring); rootList.push(ring);
+    }
+  } else if(type==='extraction'){
+    /* extraction: show a faint "ghost" root with X marker, root semi-removed */
+    const ghost=new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:0.3,transparent:true,opacity:0.3,roughness:0.5});
+    const root=new THREE.Mesh(new THREE.ConeGeometry(d.rootR,d.rootH,8),ghost);
+    root.rotation.x=Math.PI; root.position.y=-d.rootH/2; inner.add(root); parts.push(root); rootList.push(root);
   } else {
-    tbody.innerHTML = items.map(item=>{
-      total += item.price||0;
-      // Determina il colore dal tipo del primo dente della riga
-      const firstTooth = item.teeth[0];
-      const tp = firstTooth
-        ? (TYPES[toothType(firstTooth)] || TYPES.normal)
-        : TYPES.normal;
-      const badges = item.teeth.map(n=>
-        `<span class="tbadge" style="border-color:${tp.stroke};color:${tp.stroke}"
-          onclick="event.stopPropagation();pick(${n})">${n}</span>`
-      ).join('');
-      const clickFn = firstTooth ? `onclick="pick(${firstTooth})"` : '';
-      return `<tr ${clickFn} style="${firstTooth?'cursor:pointer':''}">
-        <td>${badges || '<span style="color:rgba(0,229,255,.3)">—</span>'}</td>
-        <td style="color:${tp.stroke}">${item.label}</td>
-        <td style="color:rgba(0,229,255,.55);font-size:.78rem">${item.note||'—'}</td>
-        <td class="tprice">€ ${(item.price||0).toFixed(2).replace('.',',')}</td>
-      </tr>`;
-    }).join('');
+    /* natural roots */
+    const offs = d.roots===2?[-d.md*0.22,d.md*0.22]:[0];
+    offs.forEach(ox=>{
+      const rootMat=new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:0.28,metalness:0.1,roughness:0.45,transparent:true,opacity:0.5});
+      const root=new THREE.Mesh(new THREE.ConeGeometry(d.rootR,d.rootH,8),rootMat);
+      root.rotation.x=Math.PI; root.position.set(ox,-d.rootH/2,0);
+      inner.add(root); parts.push(root); rootList.push(root);
+      const re=new THREE.LineSegments(new THREE.EdgesGeometry(root.geometry,30),new THREE.LineBasicMaterial({color:lighten(col),transparent:true,opacity:0.3}));
+      re.position.copy(root.position); re.rotation.copy(root.rotation); inner.add(re); edgeList.push(re);
+    });
   }
 
-  const fmt = v => v.toLocaleString('it-IT',{minimumFractionDigits:2});
-  document.getElementById('grand-total').textContent = `€ ${fmt(total)}`;
-  document.getElementById('i-total').textContent = `€ ${Math.round(total).toLocaleString('it-IT')}`;
-  document.getElementById('i-treated').textContent = Object.keys(TREATMENTS).length + MISSING.length;
-  document.getElementById('i-sessions').textContent = PATIENT.sessions;
-  document.getElementById('i-teeth').textContent = 28 - MISSING.length;
-  document.getElementById('doc-date').textContent = PATIENT.date;
+  /* place: occlusal plane near y=0, gap between arches */
+  let GUM_Y;
+  if(upper){ inner.rotation.x=Math.PI; GUM_Y = 0.4 + d.h; }
+  else     { GUM_Y = -0.4 - d.h; }
+
+  const outer=new THREE.Group();
+  outer.add(inner);
+  outer.position.set(x,GUM_Y,z);
+  outer.rotation.y=Math.atan2(x,z);
+  outer.userData.fdi=fdi;
+  scene.add(outer);
+
+  teeth.push({fdi,group:outer,parts,edges:edgeList,roots:rootList,baseE:0.42});
 }
 
-/* ============================================================
-   INTERATTIVITÀ
-   ============================================================ */
-const tip = document.getElementById('tip');
+/* build all 32 teeth */
+[11,12,13,14,15,16,17,18, 21,22,23,24,25,26,27,28,
+ 31,32,33,34,35,36,37,38, 41,42,43,44,45,46,47,48].forEach(makeTooth);
 
-function tipShow(e, n) {
-  const tp = toothType(n);
-  const col = TYPES[tp]||TYPES.normal;
-  const tr = TREATMENTS[n];
-  document.getElementById('tip-num').textContent = `Dente ${n}`;
-  document.getElementById('tip-num').style.color = col.stroke;
-  document.getElementById('tip-type').textContent = col.label;
-  document.getElementById('tip-detail').textContent = tr
-    ? `€ ${(tr.price||0).toFixed(2).replace('.',',')}  •  ${tr.note}`
-    : (MISSING.includes(n) ? 'Dente mancante' : 'Nessun trattamento previsto');
-  tip.style.display='block';
-  tipMove(e);
+/* number sprites floating near each crown */
+function makeLabel(fdi,pos){
+  const c=document.createElement('canvas'); c.width=c.height=64;
+  const ctx=c.getContext('2d');
+  ctx.fillStyle='rgba(0,229,255,0.95)'; ctx.font='bold 30px Courier New';
+  ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(fdi,32,32);
+  const tex=new THREE.CanvasTexture(c);
+  const spr=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,opacity:0.85,depthTest:false}));
+  spr.scale.set(4,4,1); spr.position.copy(pos); scene.add(spr);
+  return spr;
 }
-function tipMove(e) {
-  tip.style.left = (e.clientX+16)+'px';
-  tip.style.top  = (e.clientY-12)+'px';
-}
-function tipHide(){ tip.style.display='none'; }
-document.getElementById('svg-dental').addEventListener('mousemove', tipMove);
+const labels=[];
+teeth.forEach(t=>{
+  const q=Math.floor(t.fdi/10), upper=(q===1||q===2);
+  const p=t.group.position.clone();
+  p.y += upper? 16 : -16;
+  p.multiplyScalar(1.04);
+  labels.push({fdi:t.fdi, spr:makeLabel(t.fdi,p)});
+});
 
-let _picked = null;
-function pick(n) {
-  if(_picked) {
-    const prev = document.querySelector(`[data-n="${_picked}"] .t-body`);
-    if(prev){ prev.style.strokeWidth='1.5'; prev.style.filter=''; }
-  }
-  _picked = n;
-  const el = document.querySelector(`[data-n="${n}"] .t-body`);
-  if(el){ el.style.strokeWidth='3'; el.style.filter='url(#sglow)'; }
-  // Scroll tabella
-  const row = [...document.querySelectorAll('#tbody tr')].find(r=>
-    r.querySelector('.tbadge')?.textContent == n
-  );
+/* ---------- interaction ---------- */
+const raycaster=new THREE.Raycaster();
+const mouse=new THREE.Vector2();
+let hovered=null, picked=null, filterType=null;
+
+function highlight(){
+  const target = hovered ?? picked;
+  teeth.forEach(t=>{
+    const dim = filterType && toothType(t.fdi)!==filterType && toothType(t.fdi)!=='missing';
+    const on = t.fdi===target;
+    t.parts.forEach(m=>{
+      if(m.material){
+        m.material.emissiveIntensity = on? 1.15 : t.baseE;
+        m.material.opacity = dim? 0.12 : (m===t.parts[0]?0.82: m.material.opacity);
+      }
+    });
+    t.edges.forEach(e=> e.material.opacity = on?1.0:(dim?0.06:0.5));
+    t.group.scale.setScalar(on?1.08:1);
+    t.group.visible = true;
+  });
+  labels.forEach(l=>{
+    const dim = filterType && toothType(l.fdi)!==filterType;
+    l.spr.material.opacity = (l.fdi===target)?1:(dim?0.12:0.7);
+  });
+}
+window.__applyFilter = f=>{ filterType=f; highlight(); };
+
+function pointerToFdi(e){
+  const r=canvas.getBoundingClientRect();
+  mouse.x=((e.clientX-r.left)/r.width)*2-1;
+  mouse.y=-((e.clientY-r.top)/r.height)*2+1;
+  raycaster.setFromCamera(mouse,camera);
+  const hit=raycaster.intersectObjects(crownMeshes,false)[0];
+  return hit? hit.object.userData.fdi : null;
+}
+canvas.addEventListener('pointermove',e=>{
+  const fdi=pointerToFdi(e);
+  hovered=fdi;
+  if(fdi){ tipShow(fdi,e.clientX,e.clientY); canvas.style.cursor='pointer'; }
+  else { tipHide(); canvas.style.cursor='grab'; }
+  highlight();
+});
+canvas.addEventListener('pointerleave',()=>{hovered=null;tipHide();highlight();});
+
+/* click to pick (and not while dragging) */
+let downPos=null;
+canvas.addEventListener('pointerdown',e=>downPos={x:e.clientX,y:e.clientY});
+canvas.addEventListener('pointerup',e=>{
+  if(!downPos) return;
+  const moved=Math.hypot(e.clientX-downPos.x,e.clientY-downPos.y);
+  downPos=null;
+  if(moved>6) return; // was a drag
+  const fdi=pointerToFdi(e);
+  if(fdi){ window.pick(fdi); }
+});
+
+/* global pick() also used by table */
+window.pick = function(n){
+  picked=n; hovered=n; highlight();
+  // scroll table row
+  const row=[...document.querySelectorAll('#tbody tr')].find(r=>[...r.querySelectorAll('.tbadge')].some(b=>b.textContent==n));
   if(row) row.scrollIntoView({behavior:'smooth',block:'nearest'});
-}
+  hovered=null;
+};
 
-let _filter = null;
-function filterType(tp) {
-  if(_filter===tp){ _filter=null; }
-  else { _filter=tp; }
-  document.querySelectorAll('.tooth-g').forEach(g=>{
-    const n = parseInt(g.dataset.n);
-    g.style.opacity = (!_filter || toothType(n)===_filter) ? '1' : '0.2';
-  });
-  document.querySelectorAll('.leg-item').forEach(li=>{
-    li.classList.toggle('active', li.textContent.trim()===( TYPES[_filter]?.label||'' ));
-  });
+/* ---------- view presets ---------- */
+function setView(v){
+  const tgt=new THREE.Vector3(0,0,-2);
+  const cam={
+    front:[8,12,72], top:[0,90,-1.9], right:[80,10,-2], left:[-80,10,-2]
+  }[v];
+  if(cam){ camera.position.set(...cam); controls.target.copy(tgt); controls.update(); }
 }
+document.querySelectorAll('.vbtn[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));
 
-/* ============================================================
-   INIT
-   ============================================================ */
-document.getElementById('hdr-name').textContent   = PATIENT.name;
-document.getElementById('hdr-doctor').textContent = PATIENT.doctor;
-document.getElementById('hdr-date').textContent   = PATIENT.date;
-renderSVG();
-renderLegend();
-renderTable();
+let gumOn=true, rootsOn=true, spinOn=true;
+document.getElementById('btn-gum').onclick=function(){gumOn=!gumOn;gumGroup.visible=gumOn;this.classList.toggle('on',gumOn);};
+document.getElementById('btn-roots').onclick=function(){rootsOn=!rootsOn;teeth.forEach(t=>t.roots.forEach(r=>r.visible=rootsOn));this.classList.toggle('on',rootsOn);};
+document.getElementById('btn-spin').onclick=function(){spinOn=!spinOn;controls.autoRotate=spinOn;this.classList.toggle('on',spinOn);};
+
+/* ---------- resize ---------- */
+function resize(){
+  const w=viewport.clientWidth, h=viewport.clientHeight;
+  camera.aspect=w/h; camera.updateProjectionMatrix();
+  renderer.setSize(w,h,false); composer.setSize(w,h);
+}
+new ResizeObserver(resize).observe(viewport);
+resize();
+
+/* ---------- billboard labels + render loop ---------- */
+const clock=new THREE.Clock();
+function animate(){
+  requestAnimationFrame(animate);
+  clock.getDelta();
+  // pausa la rotazione automatica mentre il mouse è su un dente
+  controls.autoRotate = spinOn && hovered===null;
+  labels.forEach(l=>l.spr.quaternion.copy(camera.quaternion));
+  controls.update();
+  composer.render();
+}
+document.getElementById('loading').style.display='none';
+setView('front');
+highlight();
+animate();
 </script>
 </body>
 </html>
